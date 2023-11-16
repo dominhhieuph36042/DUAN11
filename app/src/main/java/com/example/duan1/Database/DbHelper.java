@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
     public class DbHelper extends SQLiteOpenHelper {
         public static final String DB_NAME = "MobileManager";
-        public static final int VER_SION = 16;
+        public static final int VER_SION = 18;
 
         public DbHelper(Context context) {
             super(context, DB_NAME, null, VER_SION);
@@ -39,7 +39,8 @@ import android.database.sqlite.SQLiteOpenHelper;
                     "maKH TEXT NOT NULL UNIQUE PRIMARY KEY," +
                     "hoTen TEXT NOT NULL ," +
                     "dienThoai TEXT NOT NULL," +
-                    "diaChi TEXT NOT NULL)";
+                    "diaChi TEXT NOT NULL," +
+                    "matKhau TEXT NOT NULL)";
             db.execSQL(createTableKhachHang);
             //Tạo bảng Hãng
             String createTableHang = "CREATE TABLE Hang(" +

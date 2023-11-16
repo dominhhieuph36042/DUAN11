@@ -7,14 +7,25 @@ public class KhachHang {
     private String dienThoai;
     private String diaChi;
 
+    private String matKhau;
+
     public KhachHang() {
     }
 
-    public KhachHang(String maKH, String hoTen, String dienThoai, String diaChi) {
+    public KhachHang(String maKH, String hoTen, String dienThoai, String diaChi, String matKhau) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.dienThoai = dienThoai;
         this.diaChi = diaChi;
+        this.matKhau = matKhau;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
     public String getMaKH() {

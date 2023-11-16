@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duan1.R;
+import com.example.duan1.luaChonND;
 
 public class Welcome extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class Welcome extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Welcome.this, DangNhapActivity.class);
+                Intent intent = new Intent(Welcome.this, luaChonND.class);
                 startActivity(intent);
 
                 finish();
