@@ -186,12 +186,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initUI() {
-        toolbar = findViewById(R.id.toolbar_home);
+       toolbar = findViewById(R.id.toolbar_home);
 
         drawerLayout_home = findViewById(R.id.drawerLayout_home);
 
-        navigationView_home = findViewById(R.id.navigationView_home);
+       navigationView_home = findViewById(R.id.navigationView_home);
 
         tv_username = navigationView_home.getHeaderView(0).findViewById(R.id.tv_username);
     }
+    //Anh em thich toi dung khong
 }
