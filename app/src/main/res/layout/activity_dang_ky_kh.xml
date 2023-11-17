@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:layout_margin="10dp"
     tools:context=".DangKy_KH"
+<<<<<<< HEAD
     android:background="@color/white"
     >
 
@@ -29,6 +30,10 @@
         android:textColor="@color/black"
         android:layout_marginBottom="5dp"
         />
+=======
+    >
+
+>>>>>>> origin/main
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +41,10 @@
         android:layout_gravity="center"
         android:textSize="25dp"
         android:textStyle="bold"
+<<<<<<< HEAD
         android:textColor="@color/black"
+=======
+>>>>>>> origin/main
         />
 
     <EditText
@@ -88,35 +96,55 @@
         android:layout_height="wrap_content"
         android:hint="Xác nhận lại mật khẩu"
         android:layout_margin="10dp"
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
         />
 
 
     <LinearLayout
+<<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+=======
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+>>>>>>> origin/main
         >
         <Button
             android:id="@+id/btnDk_dk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đăng ký"
+<<<<<<< HEAD
             android:background="@drawable/dangkyvien"
             android:textColor="@color/white"
             android:layout_marginRight="20dp"
             android:textStyle="bold"
+=======
+            android:layout_gravity="center"
+>>>>>>> origin/main
             />
 
         <Button
             android:id="@+id/btnOut_dk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="@drawable/dangkyvien"
             android:text="Trở về"
             android:textColor="@color/white" />
+=======
+            android:text="Trở về"
+            android:layout_gravity="center"
+            />
+>>>>>>> origin/main
 
     </LinearLayout>
 
