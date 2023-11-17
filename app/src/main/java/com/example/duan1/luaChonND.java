@@ -21,13 +21,13 @@ public class luaChonND extends AppCompatActivity {
         btnAdmin = findViewById(R.id.admin);
         btnKH  = findViewById(R.id.kh);
 
-       // btnKH.setOnClickListener(new View.OnClickListener() {
-           // @Override
-           // public void onClick(View view) {
-                //Intent i = new Intent(luaChonND.this, DangNhap_KH.class);
-              //  startActivity(i);
-         //   }
-      //  });
+        btnKH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(luaChonND.this, DangNhap_KH.class);
+                startActivity(i);
+            }
+        });
 
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override

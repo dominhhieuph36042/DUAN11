@@ -96,7 +96,6 @@
             android:text="Trở về"
             android:background="@drawable/dangkyvien"
             android:textColor="@color/white"
-
             android:textStyle="bold"
             />
 
