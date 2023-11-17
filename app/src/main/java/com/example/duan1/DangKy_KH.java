@@ -30,7 +30,7 @@ public class DangKy_KH extends AppCompatActivity {
         edMatKhau = findViewById(R.id.edMK_dk);
         edConf = findViewById(R.id.edConf_dk);
         daoKH = new DaoKhachHang(this);
-
+        //test
         btnOut_dk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
