@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".DangNhap_KH"
     android:orientation="vertical"
-<<<<<<< HEAD
+
     android:layout_margin="10dp"
     android:background="#FFFFFF"
     >
@@ -28,19 +28,9 @@
         android:layout_gravity="center"
         android:textColor="@color/black"
         android:layout_marginBottom="50dp"
-=======
-    android:layout_margin="15dp"
-    >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/welcome"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"
->>>>>>> origin/main
-        />
+    />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -86,7 +76,7 @@
         />
 
     <LinearLayout
-<<<<<<< HEAD
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -121,42 +111,23 @@
                 />
 
 
-=======
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="15dp"
-        >
-        <Button
-            android:id="@+id/btn_login_kh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập"
-            android:backgroundTint="#90B7BC"
-            />
 
-        <Button
-            android:id="@+id/btn_dk_kh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng ký"
-            android:backgroundTint="#90B7BC"
-            />
->>>>>>> origin/main
+
+
+
+
 
         <Button
             android:id="@+id/btn_out_kh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Trở về"
-<<<<<<< HEAD
+
             android:textStyle="bold"
             android:background="@drawable/viendangnhapadmin"
             android:textColor="@color/white"
 
-=======
-            android:backgroundTint="#90B7BC"
->>>>>>> origin/main
+
             />
 
     </LinearLayout>
