@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoKhachHang {
-
+//cdsc
     SQLiteDatabase db;
     DbHelper dbHelper;
     public DaoKhachHang(Context context){
