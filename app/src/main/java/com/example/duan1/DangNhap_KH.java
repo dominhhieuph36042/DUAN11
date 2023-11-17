@@ -54,7 +54,6 @@ public class DangNhap_KH extends AppCompatActivity {
                if(kt){
                    Toast.makeText(DangNhap_KH.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                    rememberLogin(user, pass, chkKH.isChecked());
-                   startActivity(new Intent(DangNhap_KH.this, TrangChuKH.class));
                } else {
                    Toast.makeText(DangNhap_KH.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
                }
