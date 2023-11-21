@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 public class ChiTietSanPham extends AppCompatActivity {
 
     int maSP;
-
+//test
     TextView tvTenSP, tvHang, tvMoTa, tvGia;
     ImageView images;
     @Override
