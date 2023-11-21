@@ -4,10 +4,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duan1.Adapter.GioHangAdapter;
+import com.example.duan1.DAO.DaoGioHang;
+import com.example.duan1.DAO.DaoSanPham;
+import com.example.duan1.Model.CTSanPham;
+import com.example.duan1.Model.GioHang;
+import com.example.duan1.Model.IClickItemRCV;
+import com.example.duan1.Model.SanPham;
 import com.example.duan1.R;
+import com.example.duan1.demo.Cart;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,18 +39,10 @@ public class GioHang_KH_Fragment extends Fragment {
     private String mParam2;
 
     public GioHang_KH_Fragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GioHang_KH_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static GioHang_KH_Fragment newInstance(String param1, String param2) {
         GioHang_KH_Fragment fragment = new GioHang_KH_Fragment();
         Bundle args = new Bundle();
@@ -46,6 +51,7 @@ public class GioHang_KH_Fragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,10 +62,59 @@ public class GioHang_KH_Fragment extends Fragment {
         }
     }
 
+    ArrayList<GioHang> lstGio;
+
+    DaoGioHang daoGioHang;
+
+    GioHangAdapter adapter;
+
+        RecyclerView rcvGioHang;
+        GioHang gioHang;
+     Cart cart;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gio_hang__k_h, container, false);
+        View v= inflater.inflate(R.layout.fragment_gio_hang__k_h, container, false);
+
+         rcvGioHang = v.findViewById(R.id.rcvGioHang);
+         lstGio = new ArrayList<>();
+
+         LinearLayoutManager manager = new LinearLayoutManager(requireContext());
+
+         rcvGioHang.setLayoutManager(manager);
+         adapter = new GioHangAdapter(requireContext(), lstGio, new IClickItemRCV() {
+             @Override
+             public void iclickItem(RecyclerView.ViewHolder viewHolder, int position, int type) {
+
+             }
+         });
+         rcvGioHang.setAdapter(adapter);
+         cart = new Cart();
+
+         Bundle args = getArguments();
+         if(args != null){
+
+             String tenSP = args.getString("tenSP");
+             String tenHang = args.getString("tenHang");
+             int giaTien = args.getInt("giaTien");
+
+             gioHang = new GioHang(01,01, tenSP, tenHang, giaTien, 1);
+
+             lstGio.add(gioHang);
+
+             cart.addToCart(gioHang);
+             updateCartUI();
+         }
+
+        return v;
+    }
+
+    private void updateCartUI() {
+      if(lstGio != null && !lstGio.isEmpty()){
+          adapter.notifyDataSetChanged();
+      }
     }
 }

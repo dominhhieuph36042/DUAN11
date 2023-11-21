@@ -59,7 +59,7 @@ public class DangKy_KH extends AppCompatActivity {
                     Toast.makeText(DangKy_KH.this, "Mật khẩu phải lớn hơn 8 ký tự", Toast.LENGTH_SHORT).show();
                 } else if(!pass.equals(conf)){
                     Toast.makeText(DangKy_KH.this, "Trường xác nhận lại mật khẩu và trường mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
-                } else if(kt) {
+                } else {
                     Toast.makeText(DangKy_KH.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(DangKy_KH.this, DangNhap_KH.class));
                 }

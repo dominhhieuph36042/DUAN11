@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
     public class DbHelper extends SQLiteOpenHelper {
         public static final String DB_NAME = "MobileManager";
-        public static final int VER_SION = 18;
+        public static final int VER_SION = 13;
 
         public DbHelper(Context context) {
             super(context, DB_NAME, null, VER_SION);
@@ -24,16 +24,7 @@ import android.database.sqlite.SQLiteOpenHelper;
                             "matKhau TEXT NOT NULL)";
             db.execSQL(createTableQuanTriVien);
             //Tạo bảng Nhân Viên
-            String createTableNhanVien = "CREATE TABLE NhanVien(" +
-                    "maNV TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                    "hoTen TEXT NOT NULL," +
-                    "dienThoai TEXT NOT NULL," +
-                    "diaChi TEXT," +
-                    "namSinh TEXT," +
-                    "taiKhoan TEXT NOT NULL," +
-                    "matKhau TEXT NOT NULL)" ;
 
-            db.execSQL(createTableNhanVien);
             //Tạo bảng Khách hàng
             String createTableKhachHang = "CREATE TABLE KhachHang(" +
                     "maKH TEXT NOT NULL UNIQUE PRIMARY KEY," +
@@ -42,6 +33,8 @@ import android.database.sqlite.SQLiteOpenHelper;
                     "diaChi TEXT NOT NULL," +
                     "matKhau TEXT NOT NULL)";
             db.execSQL(createTableKhachHang);
+
+
             //Tạo bảng Hãng
             String createTableHang = "CREATE TABLE Hang(" +
                     "maHang TEXT NOT NULL UNIQUE PRIMARY KEY," +
@@ -50,15 +43,38 @@ import android.database.sqlite.SQLiteOpenHelper;
             db.execSQL(createTableHang);
             //Tạo bảng Sản Phẩm
             String createTableSanPham = "CREATE TABLE SanPham(" +
-                    "maSP TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                    "maHang TEXT NOT NULL REFERENCES Hang(maHang)ON DELETE CASCADE ON UPDATE CASCADE," +
+                    "maSP INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "tenSP TEXT NOT NULL," +
-                    "phanLoai TEXT NOT NULL," +
-                    "tinhTrang TEXT NOT NULL," +
+                    "tenHang TEXT NOT NULL," +
+                    "moTa TEXT NOT NULL," +
                     "giaTien INTEGER NOT NULL," +
-                    "trangThai TEXT NOT NULL)" ;
-
+                    "images TEXT NOT NULL )" ;
             db.execSQL(createTableSanPham);
+
+
+
+            String createTableCTSP = "CREATE TABLE CTSP(" +
+                    "maCTSP TEXT PRIMARY KEY," +
+                    "maSP INTEGER REFERENCES SanPham(maSP)," +
+                    "tenCTSP TEXT NOT NULL," +
+                    "hangCTSP TEXT NOT NULL," +
+                    "giaTien INTEGER NOT NULL,"+
+                    "moTaCTSP TEXT NOT NULL)";
+            db.execSQL(createTableCTSP);
+
+
+
+
+            //giỏ hàng
+            String createTableGioHang = "CREATE TABLE GioHang(" +
+                    "maGioHang INTEGER PRIMARY KEY," +
+                    "maSP INTEGER REFERENCES SanPham(maSP)," +
+                    "tenSP TEXT NOT NULL," +
+                    "hangSP TEXT NOT NULL," +
+                    "giaSP INTEGER NOT NULL," +
+                    "soLuong INTEGER NOT NULL)";
+            db.execSQL(createTableGioHang);
+
 
             //Tạo bảng hóa đơn
             String createTableHoaDon = "CREATE TABLE HoaDon(" +
@@ -94,21 +110,24 @@ import android.database.sqlite.SQLiteOpenHelper;
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             // Xóa bảng khi update VERSION
             String dropTableLoaiQuanTriVien = "Drop table if exists QuanTriVien";
-            String dropTableLoaiNhanVien = "Drop table if exists NhanVien";
             String dropTableLoaiKhachHang = "Drop table if exists KhachHang";
             String dropTableLoaiHang = "Drop table if exists Hang";
             String dropTableLoaiSanPham = "Drop table if exists SanPham";
             String dropTableLoaiHoaDon = "Drop table if exists HoaDon";
             String dropTableLoaiChiTietHoaDon = "Drop table if exists ChiTietHoaDon";
 
+            String dropTableCTSanPham = "Drop table if exists CTSP";
+            String dropTableGioHang = "Drop table if exists GioHang";
+
             if (oldVersion != newVersion) {
                 db.execSQL(dropTableLoaiQuanTriVien);
-                db.execSQL(dropTableLoaiNhanVien);
-                db.execSQL(dropTableLoaiKhachHang);
+               db.execSQL(dropTableLoaiKhachHang);
                 db.execSQL(dropTableLoaiHang);
                 db.execSQL(dropTableLoaiSanPham);
                 db.execSQL(dropTableLoaiHoaDon);
                 db.execSQL(dropTableLoaiChiTietHoaDon);
+                db.execSQL(dropTableCTSanPham);
+                db.execSQL(dropTableGioHang);
                 onCreate(db);
             }
         }

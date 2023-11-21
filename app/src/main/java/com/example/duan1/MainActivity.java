@@ -21,11 +21,12 @@ import com.example.duan1.DAO.DAOQuanTriVien;
 import com.example.duan1.Fragment.CTHDFragment;
 import com.example.duan1.Fragment.DoiMatKhauFragment;
 import com.example.duan1.Fragment.HoaDonFragment;
-import com.example.duan1.Fragment.TaoTaiKhoanFragment;
+import com.example.duan1.Fragment.SanPhamFragment;
 import com.example.duan1.Fragment.Top10Fragment;
 import com.example.duan1.Fragment.TrangchuFragment;
 import com.example.duan1.Model.DangNhapActivity;
 import com.example.duan1.Model.QuanTriVien;
+import com.example.duan1.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_TRANGCHU = 0;
 
     private static final int FRAGMENT_HOADON = 1;
-    private static final int FRAGMENT_CHITIETHOADON = 2;
+    private static final int FRAGMENT_SANPHAM = 2;
 
     private static final int FRAGMENT_DOANHTHU = 3;
 
@@ -45,13 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCurrentFragment = FRAGMENT_TRANGCHU;
 
+
     DrawerLayout drawerLayout_home;
     NavigationView navigationView_home;
     Toolbar toolbar;
 
     String[] title = {"Trang chu",
             "Quan ly don hang ",
-            "Quan ly nhap hang ",
+            "Quản lý sản phẩm ",
             "Doanh thu ",
             "Top 10 san pham ",
             "Quan ly tài khoản",
@@ -117,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new HoaDonFragment());
                         mCurrentFragment = FRAGMENT_HOADON;
                     }
-                } else if (item.getItemId() == R.id.donxuat) {
+                } else if (item.getItemId() == R.id.sanPham) {
                     toolbar.setTitle(title[2]);
-                    if (mCurrentFragment != FRAGMENT_CHITIETHOADON) {
-                        replaceFragment(new CTHDFragment());
-                        mCurrentFragment = FRAGMENT_CHITIETHOADON;
+                    if (mCurrentFragment != FRAGMENT_SANPHAM) {
+                        replaceFragment(new SanPhamFragment());
+                        mCurrentFragment = FRAGMENT_SANPHAM;
                     }
                     else if (item.getItemId() == R.id.doanhthu) {
                         toolbar.setTitle(title[3]);
@@ -136,12 +138,6 @@ public class MainActivity extends AppCompatActivity {
                     if (mCurrentFragment != FRAGMENT_TOP10) {
                         replaceFragment(new Top10Fragment());
                         mCurrentFragment = FRAGMENT_TOP10;
-                    }
-                } else if (item.getItemId() == R.id.createAccount) {
-                    toolbar.setTitle(title[5]);
-                    if (mCurrentFragment != FRAGMENT_QUANLYTAIKHOAN) {
-                        replaceFragment(new TaoTaiKhoanFragment());
-                        mCurrentFragment = FRAGMENT_QUANLYTAIKHOAN;
                     }
                 } else if (item.getItemId() == R.id.changePassword) {
                     toolbar.setTitle(title[6]);

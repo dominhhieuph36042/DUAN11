@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.nfc.Tag;
+import android.util.Log;
 
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.SanPham;
@@ -13,21 +15,20 @@ import java.util.List;
 
 public class DaoSanPham {
     private SQLiteDatabase db;
+    private DbHelper dbHelper;
 
     public DaoSanPham(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
+        dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
     public long insert(SanPham obj) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maSP",obj.getMaSP());
-        contentValues.put("maHang",obj.getMaHang());
         contentValues.put("tenSP",obj.getTenSP());
-        contentValues.put("phanLoai",obj.getPhanLoai());
-        contentValues.put("tinhTrang",obj.getTinhTrang());
+        contentValues.put("tenHang",obj.getTenHang());
+        contentValues.put("moTa",obj.getMoTa());
         contentValues.put("giaTien",obj.getGiaTien());
-        contentValues.put("trangThai",obj.getTrangThai());
+        contentValues.put("images", obj.getImages());
 
         return db.insert("SanPham",null,contentValues);
     }
@@ -35,13 +36,11 @@ public class DaoSanPham {
     public long update(SanPham obj) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("maSP",obj.getMaSP());
-        contentValues.put("maHang",obj.getMaHang());
         contentValues.put("tenSP",obj.getTenSP());
-        contentValues.put("phanLoai",obj.getPhanLoai());
-        contentValues.put("tinhTrang",obj.getTinhTrang());
+        contentValues.put("tenHang",obj.getTenHang());
+        contentValues.put("moTa",obj.getMoTa());
         contentValues.put("giaTien",obj.getGiaTien());
-        contentValues.put("trangThai",obj.getTrangThai());
-
+        contentValues.put("images", obj.getImages());
 
         return db.update("SanPham",contentValues,"maSP = ?",new String[]{String.valueOf(obj.getMaSP())});
     }
@@ -55,20 +54,59 @@ public class DaoSanPham {
         Cursor cursor = db.rawQuery(sql,selectionArgs);
         while (cursor.moveToNext()) {
             lstSach.add(new SanPham(
-                    cursor.getString(0),
+                    Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3),
-                    cursor.getString(4),
-                    Integer.parseInt(cursor.getString(5)),
-                    cursor.getString(6)
+                    Integer.parseInt(cursor.getString(4)),
+                    cursor.getString(5)
+
             ));
         }
         return lstSach;
     }
-    public SanPham getID (String id) {
+
+
+    public SanPham selectID(int id) {
+        SanPham sanPham = new SanPham();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM SanPham WHERE maSP =?", new String[]{String.valueOf(id)});
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    SanPham sp = new SanPham();
+                    sp.setMaSP(cursor.getInt(0));
+                    sp.setTenSP(cursor.getString(1));
+                    sp.setTenHang(cursor.getString(2));
+                    sp.setMoTa(cursor.getString(3));
+                    sp.setGiaTien(cursor.getInt(4));
+                    sp.setImages(cursor.getString(5));
+                    sanPham = sp;
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+//        Cursor cursor = db.rawQuery("SELECT * FROM SanPham WHERE maSP =?", new String[]{String.valueOf(id)});
+//        while (cursor.moveToNext()) {
+//           SanPham sp = new SanPham();
+//           sp.setMaSP(cursor.getInt(0));
+//           sp.setTenSP(cursor.getString(1));
+//           sp.setTenHang(cursor.getString(2));
+//           sp.setGiaTien(cursor.getInt(3));
+//           sp.setMoTa(cursor.getString(4));
+//           sanPham = sp;
+//
+//        }
+        return sanPham;
+
+    }
+    public SanPham getID (String maSP) {
         String sql = "SELECT * FROM SanPham WHERE maSP = ?";
-        List<SanPham> lstTT = getData(sql,id);
+        List<SanPham> lstTT = getData(sql,maSP);
         return lstTT.get(0);
     }
 

@@ -18,12 +18,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/xehang"
-                android:id="@+id/images_sp"
+
                 />
 
             <TextView
                 android:textStyle="bold"
-                android:id="@+id/sp_maSP"
+                android:id="@+id/maSP_gioHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mã San Pham: 01"
@@ -35,7 +35,7 @@
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:textStyle="bold"
-                android:id="@+id/sp_tensanpham"
+                android:id="@+id/tensanpham_gioHang"
                 android:layout_marginTop="6dp"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:textStyle="bold"
-                android:id="@+id/sp_tenHang"
+                android:id="@+id/tenHang_gioHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ten hang"
@@ -54,23 +54,33 @@
 
             <TextView
                 android:textStyle="bold"
-                android:id="@+id/sp_giatien"
+                android:id="@+id/giatien_gioHang"
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gia tien"
+                android:text="Giá tiền"
+                android:textSize="16sp"
+                android:textColor="@color/gray_4d0"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/soLuong_gioHang"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng"
                 android:textSize="16sp"
                 android:textColor="@color/gray_4d0"/>
 
 
+
         </LinearLayout>
         <ImageButton
-            android:id="@+id/btn_delete_spAdmin"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:id="@+id/btn_delete_gioHang"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/img_delete" />
-
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/img_delete"/>
     </RelativeLayout>
 </RelativeLayout>

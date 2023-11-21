@@ -1,45 +1,49 @@
 package com.example.duan1.Model;
 
 public class SanPham {
-    private String maSP;
-    private String maHang;
+    private int maSP;
+
     private String tenSP;
-
-    private String phanLoai;
-    private String tinhTrang;
+    private String tenHang;
+    private String moTa;
     private int giaTien;
-    private String trangThai;
 
-
-
+    private String images;
 
     public SanPham() {
     }
 
-    public SanPham(String maSP, String maHang, String tenSP, String phanLoai, String tinhTrang, int giaTien, String trangThai) {
+    public SanPham(int maSP, String tenSP, String tenHang, String moTa, int giaTien, String images) {
         this.maSP = maSP;
-        this.maHang = maHang;
         this.tenSP = tenSP;
-        this.phanLoai = phanLoai;
-        this.tinhTrang = tinhTrang;
+        this.tenHang = tenHang;
+        this.moTa = moTa;
         this.giaTien = giaTien;
-        this.trangThai = trangThai;
+        this.images = images;
     }
 
-    public String getMaSP() {
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    public int getMaSP() {
         return maSP;
     }
 
-    public void setMaSP(String maSP) {
+    public void setMaSP(int maSP) {
         this.maSP = maSP;
-    }
-
-    public String getMaHang() {
-        return maHang;
-    }
-
-    public void setMaHang(String maHang) {
-        this.maHang = maHang;
     }
 
     public String getTenSP() {
@@ -50,20 +54,12 @@ public class SanPham {
         this.tenSP = tenSP;
     }
 
-    public String getPhanLoai() {
-        return phanLoai;
+    public String getTenHang() {
+        return tenHang;
     }
 
-    public void setPhanLoai(String phanLoai) {
-        this.phanLoai = phanLoai;
-    }
-
-    public String getTinhTrang() {
-        return tinhTrang;
-    }
-
-    public void setTinhTrang(String tinhTrang) {
-        this.tinhTrang = tinhTrang;
+    public void setTenHang(String tenHang) {
+        this.tenHang = tenHang;
     }
 
     public int getGiaTien() {
@@ -72,13 +68,5 @@ public class SanPham {
 
     public void setGiaTien(int giaTien) {
         this.giaTien = giaTien;
-    }
-
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
     }
 }

@@ -11,11 +11,11 @@
     <item
         android:icon="@drawable/ic_direction"
         android:id="@+id/donnhap"
-        android:title="Quan ly don hang"/>
+        android:title="Quản lý đơn hàng"/>
     <item
         android:icon="@drawable/ic_nhap"
-        android:id="@+id/donxuat"
-        android:title="Quan ly nhap hang"/>
+        android:id="@+id/sanPham"
+        android:title="Quản lý sản phẩm"/>
 
 
 

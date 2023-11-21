@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.duan1.DAO.DAOQuanTriVien;
 import com.example.duan1.MainActivity;
 import com.example.duan1.R;
+import com.example.duan1.luaChonND;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class DangNhapActivity extends AppCompatActivity {
 
-    Button btn_login;
+    Button btn_login, btnOut;
     EditText txt_username,txt_password;
     TextInputLayout w_username,w_password;
     CheckBox chk_rememberAccount;
@@ -28,6 +29,14 @@ public class DangNhapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+
+        btnOut = findViewById(R.id.btn_out);
+        btnOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DangNhapActivity.this, luaChonND.class));
+            }
+        });
 
         initUI();
         btnLogin();
