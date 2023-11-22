@@ -77,6 +77,8 @@ public class SanPhamFragment extends Fragment {
             }
         });
 
+
+
         return v;
     }
 

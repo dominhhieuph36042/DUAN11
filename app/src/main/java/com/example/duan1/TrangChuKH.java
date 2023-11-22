@@ -12,12 +12,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.duan1.Fragment.GioHang_KH_Fragment;
+
 import com.example.duan1.Fragment.Home_KH_Fragment;
 import com.example.duan1.Fragment.ThongTin_KH_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class TrangChuKH extends AppCompatActivity {
 
@@ -40,8 +42,7 @@ public class TrangChuKH extends AppCompatActivity {
                      ThongTin_KH_Fragment thongTin = new ThongTin_KH_Fragment();
                      replaceFragment(thongTin);
                  } else if(item.getItemId() == R.id.navigation_cart){
-                     GioHang_KH_Fragment gioHang = new GioHang_KH_Fragment();
-                     replaceFragment(gioHang);
+                    startActivity(new Intent(TrangChuKH.this, GioHang.class));
                  } else if(item.getItemId() == R.id.navigation_out){
                      AlertDialog.Builder buider = new AlertDialog.Builder(TrangChuKH.this);
                      buider.setMessage("Bạn có muốn đăng xuất?");
@@ -68,6 +69,10 @@ public class TrangChuKH extends AppCompatActivity {
 
         // Đặt fragment mặc định được hiển thị khi activity bắt đầu
         bottm.setSelectedItemId(R.id.navigation_home);
+
+        if (untils.mangGioHang == null){
+            untils.mangGioHang = new ArrayList<>();
+        }
     }
 
     private void replaceFragment(Fragment fragment) {

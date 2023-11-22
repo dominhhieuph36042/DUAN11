@@ -3,6 +3,7 @@ package com.example.duan1.Model;
 public class GioHang {
 
     private int maGioHang;
+
     private int maSP;
     private String tenSP, hangSP;
     private int gia, soluong;

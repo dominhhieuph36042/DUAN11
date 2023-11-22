@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.Adapter.SanPhamAdapter;
+import com.example.duan1.Adapter.SanPhamKHAdapter;
 import com.example.duan1.DAO.DaoSanPham;
 import com.example.duan1.Model.IClickItemRCV;
 import com.example.duan1.Model.SanPham;
@@ -24,7 +25,7 @@ public class Home_KH_Fragment extends Fragment {
        ArrayList<SanPham> lstSP;
 
        DaoSanPham spDao;
-       SanPhamAdapter adapter;
+       SanPhamKHAdapter adapter;
 
 
        private ISendDataListiner mISendDataListiner;
@@ -97,12 +98,12 @@ public class Home_KH_Fragment extends Fragment {
 
     public void loadData(){
         lstSP =(ArrayList<SanPham>) spDao.getAll();
-        adapter = new SanPhamAdapter(getContext(), lstSP, new IClickItemRCV() {
-            @Override
-            public void iclickItem(RecyclerView.ViewHolder viewHolder, int position, int type) {
+       adapter = new SanPhamKHAdapter(getContext(), lstSP, new IClickItemRCV() {
+           @Override
+           public void iclickItem(RecyclerView.ViewHolder viewHolder, int position, int type) {
 
-            }
-        });
+           }
+       });
 
         rcv_spKH.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcv_spKH.setAdapter(adapter);

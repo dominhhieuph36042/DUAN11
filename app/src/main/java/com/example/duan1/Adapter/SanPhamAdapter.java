@@ -79,14 +79,6 @@ public class SanPhamAdapter  extends RecyclerView.Adapter<SanPhamAdapter.ViewHol
         });
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, ChiTietSanPham.class);
-                i.putExtra("id", lstSP.get(holder.getAdapterPosition()).getMaSP());
-                context.startActivity(i);
-            }
-        });
 
     }
 

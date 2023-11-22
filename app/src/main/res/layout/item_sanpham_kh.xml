@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:padding="12dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xehang"
+            android:id="@+id/images_spKH"
+            />
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/sp_maSPKH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã San Pham: 01"
+            android:textSize="16sp"
+            android:textColor="@color/gray_4d0"/>
+
+
+        <TextView
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:id="@+id/sp_tensanphamKH"
+            android:layout_marginTop="6dp"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="Tên San Pham"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/sp_tenHangKH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ten hang"
+            android:textSize="16sp"
+            android:textColor="@color/gray_4d0"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/sp_giatienKH"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gia tien"
+            android:textSize="16sp"
+            android:textColor="@color/gray_4d0"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
