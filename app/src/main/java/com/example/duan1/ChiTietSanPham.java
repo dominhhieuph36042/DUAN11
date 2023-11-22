@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.duan1.DAO.DaoGioHang;
 import com.example.duan1.DAO.DaoSanPham;
 import com.example.duan1.Model.GioHang;
 import com.example.duan1.Model.SanPham;
@@ -27,6 +28,8 @@ public class ChiTietSanPham extends AppCompatActivity {
     Button btnAddGioHang;
 
     SanPham sp;
+
+    DaoGioHang daoGH;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class ChiTietSanPham extends AppCompatActivity {
         maSP = i.getIntExtra("id", 0);
         DaoSanPham daoSp = new DaoSanPham(this);
         sp = daoSp.selectID(maSP);
+
+        daoGH = new DaoGioHang(this);
 
         tvTenSP = findViewById(R.id.tvTenCTSP_kh);
         tvHang = findViewById(R.id.tvHangCTSP_kh);

@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.duan1.Database.DbHelper;
-import com.example.duan1.Model.CTSanPham;
 import com.example.duan1.Model.GioHang;
-import com.example.duan1.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +14,10 @@ import java.util.List;
 public class DaoGioHang {
     private SQLiteDatabase db;
     private Context context;
+    DbHelper dbHelper;
 
     public DaoGioHang(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
+        dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -65,21 +64,74 @@ public class DaoGioHang {
         return getData(sql);
     }
 
-//    public List<GioHang> getGio(){
-//       String sqlGio ="SELECT maSP, tenSP, giaSP FROM CTSP";
-//       List<GioHang> lstGio = new ArrayList<>();
-//       DaoSanPham dapCt = new DaoSanPham(context);
-//        Cursor cursor = db.rawQuery(sqlGio,null);
-//        while ((cursor.moveToNext())){
-//            SanPham sach = dapCt.getID(cursor.getString(0));
-//            lstGio.add(new GioHang(
-//                    sach.getMaSP(),
-//                    sach.getTenSP(),
-//                    sach.getTenHang(),
-//                    sach.getGiaTien(),
-//                    Integer.parseInt(cursor.getString(1))
-//            ));
-//        }
-//        return lstGio;
-//    }
+public boolean insertToCart(GioHang gh){
+    // Mở cơ sở dữ liệu để ghi
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+    Cursor cursor = database.rawQuery("SELECT * FROM GioHang WHERE maSP = ?",new String[]{String.valueOf(gh.getMaSP())});
+    long check;
+
+    if(cursor.getCount() > 0){
+        // Nếu sản phẩm đã tồn tại, số lượng trong giỏ hàng tăng thêm 1
+        cursor.moveToFirst();
+        int currentQuantity = cursor.getInt(5);
+        currentQuantity +=1;
+
+        ContentValues values = new ContentValues();
+        values.put("soLuong", currentQuantity);
+
+        check = database.update("GioHang", values, "maSP = ?", new String[]{String.valueOf(gh.getMaSP())});
+    } else {
+        // Nếu sản phẩm chưa tồn tại, thêm mới vào giỏ hàng
+        int quantity = 1;
+        ContentValues values = new ContentValues();
+        values.put("maSP", gh.getMaSP());
+        values.put("tenSP", gh.getTenSP());
+        values.put("hangSP", gh.getHangSP());
+        values.put("giaSP", gh.getGia());
+        values.put("soLuong", gh.getSoluong());
+        check = database.insert("GioHang", null , values);
+    }
+
+    if (check == -1) {
+            return false;
+        }
+        return true;
+    }
 }
+
+
+//    public boolean insertToCart(GioHang gh, String email) {
+//        // Mở cơ sở dữ liệu để ghi
+//        SQLiteDatabase database = dbHelper.getWritableDatabase();
+//        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+//        Cursor cursor = database.rawQuery("SELECT * FROM " + DBHelper.TABLE_CART + " WHERE name = ? AND emailCus = ?", new String[]{product.getName(), email});
+//        long check;
+//
+//        if (cursor.getCount() > 0) {
+//            // Nếu sản phẩm đã tồn tại, số lượng trong giỏ hàng tăng thêm 1
+//            cursor.moveToFirst();
+//            int currentQuantity = cursor.getInt(3);
+//            currentQuantity += 1;
+//
+//            ContentValues values = new ContentValues();
+//            values.put("quantity", currentQuantity);
+//            check = database.update(DBHelper.TABLE_CART, values, "name = ? AND emailCus = ?", new String[]{product.getName(), email});
+//
+//        } else {
+//            // Nếu sản phẩm chưa tồn tại, thêm mới vào giỏ hàng
+//            int quantity = 1;
+//            ContentValues values = new ContentValues();
+//            values.put("idProduct", product.getId());
+//            values.put("name", product.getName());
+//            values.put("quantity", quantity);
+//            values.put("price", product.getPrice());
+//            values.put("emailCus", email);
+//            check = database.insert(DBHelper.TABLE_CART, null , values);
+//        }
+//        if (check == -1) {
+//            return false;
+//        }
+//        return true;
+//    }
+
