@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shadow"
+        android:background="@drawable/sp"
         android:padding="12dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/xehang"
                 android:id="@+id/images_sp"
+                android:layout_margin="20dp"
                 />
 
             <TextView
@@ -26,31 +27,34 @@
                 android:id="@+id/sp_maSP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã San Pham: 01"
+                android:text="Mã Sản Phẩm : "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
 
 
             <TextView
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:textStyle="bold"
                 android:id="@+id/sp_tensanpham"
-                android:layout_marginTop="6dp"
-                android:layout_width="280dp"
+                android:layout_width="390dp"
                 android:layout_height="wrap_content"
-                android:text="Tên San Pham"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Tên Sản Phẩm"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:textStyle="bold"
                 android:id="@+id/sp_tenHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ten hang"
+                android:text="Tên Hãng :         "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:textStyle="bold"
@@ -58,9 +62,10 @@
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gia tien"
+                android:text="Gia tiền :          "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="#FF0031"
+                android:layout_margin="5dp"/>
 
 
         </LinearLayout>

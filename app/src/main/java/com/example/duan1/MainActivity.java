@@ -24,6 +24,7 @@ import com.example.duan1.Fragment.HoaDonFragment;
 import com.example.duan1.Fragment.SanPhamFragment;
 import com.example.duan1.Fragment.Top10Fragment;
 import com.example.duan1.Fragment.TrangchuFragment;
+import com.example.duan1.Fragment.thongtintaikhoan;
 import com.example.duan1.Model.DangNhapActivity;
 import com.example.duan1.Model.QuanTriVien;
 import com.example.duan1.databinding.ActivityMainBinding;
@@ -51,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView_home;
     Toolbar toolbar;
 
-    String[] title = {"Trang chu",
-            "Quan ly don hang ",
+    String[] title = {"Trang chủ ",
+            "Quản lý đơn hàng  ",
             "Quản lý sản phẩm ",
             "Doanh thu ",
-            "Top 10 san pham ",
-            "Quan ly tài khoản",
-            "Thong tin tai khoan"};
+            "Top 10 sản phẩm ",
+            "Quản lý tài khoản ",
+            "Thông tin tài khoản"};
     TextView tv_username;
 
     //test may NA

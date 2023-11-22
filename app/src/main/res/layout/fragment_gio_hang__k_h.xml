@@ -17,6 +17,9 @@
         android:text="Thanh toán"
         android:layout_gravity="bottom"
         android:id="@+id/btnThanhToan"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         />
 
 </FrameLayout>

@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shadow"
+        android:background="@drawable/sp"
         android:padding="12dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,6 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/xehang"
+                android:layout_margin="20dp"
 
                 />
 
@@ -26,9 +27,10 @@
                 android:id="@+id/maSP_gioHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã San Pham: 01"
+                android:text="Mã Sản Phẩm : "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
 
 
             <TextView
@@ -39,18 +41,20 @@
                 android:layout_marginTop="6dp"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:text="Tên San Pham"
+                android:text="Tên Sản Phẩm :"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:textStyle="bold"
                 android:id="@+id/tenHang_gioHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ten hang"
+                android:text="Tên Hãng : "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:textStyle="bold"
@@ -58,9 +62,10 @@
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giá tiền"
+                android:text="Giá tiền : "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="#FF0000"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:textStyle="bold"
@@ -68,9 +73,10 @@
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Số lượng"
+                android:text="Số lượng : "
                 android:textSize="16sp"
-                android:textColor="@color/gray_4d0"/>
+                android:textColor="@color/blue_A400"
+                android:layout_margin="5dp"/>
 
 
 

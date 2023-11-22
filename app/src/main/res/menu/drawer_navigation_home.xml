@@ -31,7 +31,7 @@
                 <item
                     android:icon="@drawable/ic_vertical_align_top"
                     android:id="@+id/top10"
-                    android:title="Top 10 sách mượn nhiều nhất"/>
+                    android:title="Top 10 sản phầm bán chạy"/>
 
             </menu>
         </item>
@@ -43,11 +43,11 @@
                 <item
                     android:icon="@drawable/ic_person_add"
                     android:id="@+id/createAccount"
-                    android:title="Quan ly tai khoan "/>
+                    android:title="Quản lý tài khoản "/>
                 <item
                     android:icon="@drawable/ic_vpn_key"
                     android:id="@+id/changePassword"
-                    android:title="Thong tin tai khoan   "/>
+                    android:title="Thông tin tài khoảm   "/>
                 <item
                     android:id="@+id/logout"
                     android:icon="@drawable/ic_logout"
