@@ -8,7 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
     public class DbHelper extends SQLiteOpenHelper {
         public static final String DB_NAME = "MobileManager";
-        public static final int VER_SION = 14;
+        public static final int VER_SION = 15;
+        //fsfdsfdsdfdsfds
 
         public DbHelper(Context context) {
             super(context, DB_NAME, null, VER_SION);
