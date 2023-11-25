@@ -106,9 +106,14 @@
                   android:src="@drawable/add_gh"
                   android:id="@+id/item_gioHang_cong"
                   />
+
+              <CheckBox
+                  android:id="@+id/item_gioHang_check"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="100dp"
+                  />
           </LinearLayout>
-
-
 
         </LinearLayout>
         <ImageButton

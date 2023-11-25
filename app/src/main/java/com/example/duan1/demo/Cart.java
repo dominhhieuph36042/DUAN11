@@ -28,7 +28,7 @@ public class Cart {
 
 //    public double getTotalPrice() {
 //        double totalPrice = 0;
-//        for (GioHang product : productList) {
+//        for (GioHangActivity product : productList) {
 //            totalPrice += product.get();
 //        }
 //        return totalPrice;

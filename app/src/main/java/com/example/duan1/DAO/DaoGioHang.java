@@ -47,7 +47,8 @@ public class DaoGioHang {
                     cursor.getString(2),
                     cursor.getString(3),
                     Integer.parseInt(cursor.getString(4)),
-                    Integer.parseInt(cursor.getString(5))
+                    Integer.parseInt(cursor.getString(5)),
+                    cursor.getString(6)
             ));
         }
         return lstGioHang;
@@ -101,7 +102,7 @@ public boolean insertToCart(GioHang gh){
 }
 
 
-//    public boolean insertToCart(GioHang gh, String email) {
+//    public boolean insertToCart(GioHangActivity gh, String email) {
 //        // Mở cơ sở dữ liệu để ghi
 //        SQLiteDatabase database = dbHelper.getWritableDatabase();
 //        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa

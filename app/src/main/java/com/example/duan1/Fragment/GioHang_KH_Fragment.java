@@ -14,7 +14,7 @@
 //import com.example.duan1.DAO.DaoGioHang;
 //import com.example.duan1.DAO.DaoSanPham;
 //import com.example.duan1.Model.CTSanPham;
-//import com.example.duan1.Model.GioHang;
+//import com.example.duan1.Model.GioHangActivity;
 //import com.example.duan1.Model.IClickItemRCV;
 //import com.example.duan1.Model.SanPham;
 //import com.example.duan1.R;
@@ -62,14 +62,14 @@
 //        }
 //    }
 //
-//    ArrayList<GioHang> lstGio;
+//    ArrayList<GioHangActivity> lstGio;
 //
 //    DaoGioHang daoGioHang;
 //
 //    GioHangAdapter adapter;
 //
 //        RecyclerView rcvGioHang;
-//        GioHang gioHang;
+//        GioHangActivity gioHang;
 //     Cart cart;
 //
 //
@@ -101,7 +101,7 @@
 //             String tenHang = args.getString("tenHang");
 //             int giaTien = args.getInt("giaTien");
 //
-//             gioHang = new GioHang(01,01, tenSP, tenHang, giaTien, 1);
+//             gioHang = new GioHangActivity(01,01, tenSP, tenHang, giaTien, 1);
 //
 //             lstGio.add(gioHang);
 //

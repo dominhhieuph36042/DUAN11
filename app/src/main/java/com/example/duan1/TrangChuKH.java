@@ -15,7 +15,6 @@ import android.view.MenuItem;
 
 import com.example.duan1.Fragment.Home_KH_Fragment;
 import com.example.duan1.Fragment.ThongTin_KH_Fragment;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -42,7 +41,7 @@ public class TrangChuKH extends AppCompatActivity {
                      ThongTin_KH_Fragment thongTin = new ThongTin_KH_Fragment();
                      replaceFragment(thongTin);
                  } else if(item.getItemId() == R.id.navigation_cart){
-                    startActivity(new Intent(TrangChuKH.this, GioHang.class));
+                    startActivity(new Intent(TrangChuKH.this, GioHangActivity.class));
                  } else if(item.getItemId() == R.id.navigation_out){
                      AlertDialog.Builder buider = new AlertDialog.Builder(TrangChuKH.this);
                      buider.setMessage("Bạn có muốn đăng xuất?");

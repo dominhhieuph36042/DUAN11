@@ -1,14 +1,16 @@
 package com.example.duan1;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duan1.DAO.DaoGioHang;
 import com.example.duan1.DAO.DaoSanPham;
@@ -23,7 +25,7 @@ public class ChiTietSanPham extends AppCompatActivity {
  //test2
     //test3
     TextView tvTenSP, tvHang, tvMoTa, tvGia;
-    ImageView images;
+    ImageView images, imagesGH;
 
     Button btnAddGioHang;
 
@@ -47,29 +49,35 @@ public class ChiTietSanPham extends AppCompatActivity {
         tvGia = findViewById(R.id.tvGiaCTSP_kh);
         tvMoTa = findViewById(R.id.tvMoTaCTSP_kh);
         images  = findViewById(R.id.imgCTSP);
+
         btnAddGioHang = findViewById(R.id.btnAddGioHang);
 
         tvTenSP.setText("Tên sản phẩm:" + sp.getTenSP().toString());
         tvHang.setText("Tên hãng:"+sp.getTenHang().toString());
         tvGia.setText("Giá:" + String.valueOf(sp.getGiaTien()));
         tvMoTa.setText("Mô tả:"+sp.getMoTa().toString());
-//        images.setImageResource(Integer.parseInt(sp.getImages()));
+
         Picasso.get().load(sp.getImages()).into(images);
+
 
 
       initControl();
     }
+
 
     private void initControl() {
         btnAddGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 theGioHang();
+                Toast.makeText(ChiTietSanPham.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void theGioHang() {
+
+        imagesGH = findViewById(R.id.images_gioHang);
         if(untils.mangGioHang.size() > 0){
              boolean flag = false;
             int soLuong = 1;
@@ -87,6 +95,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                 gioHang.setMaSP(sp.getMaSP());
                 gioHang.setTenSP(sp.getTenSP());
                 gioHang.setHangSP(sp.getTenHang());
+                gioHang.setImagesGH(sp.getImages());
 
                 untils.mangGioHang.add(gioHang);
             }
@@ -95,7 +104,7 @@ public class ChiTietSanPham extends AppCompatActivity {
             int soLuong = 1;
             int gia = sp.getGiaTien() * soLuong;
 
-            GioHang gioHang = new GioHang();
+           GioHang gioHang = new GioHang();
             gioHang.setGia(gia);
             gioHang.setSoluong(soLuong);
             gioHang.setMaSP(sp.getMaSP());

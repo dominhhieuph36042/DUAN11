@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,12 +30,15 @@ import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHolder> {
 
     private Context context;
     private List<GioHang> lstGioHang;
+
+    private ArrayList<SanPham> lstSanPham;
     DaoSanPham spDao;
     IClickItemRCV clickItemRCV;
 
@@ -54,11 +59,34 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull GioHangAdapter.ViewHolder holder, int position) {
        GioHang gh = lstGioHang.get(position);
-       holder.tvmaSP.setText(gh.getTenSP());
-       holder.tvTenSP.setText(gh.getTenSP());
-       holder.tvHangSP.setText(gh.getHangSP());
-       holder.tvGia.setText("Giá:" + gh.getGia() + "đ" );
+
+       DaoSanPham daosp = new DaoSanPham(context);
+        SanPham sanPham = daosp.getID(String.valueOf(gh.getMaSP()));
+
+       holder.tvmaSP.setText(sanPham.getTenSP());
+       holder.tvTenSP.setText(sanPham.getTenSP());
+       holder.tvHangSP.setText(sanPham.getTenHang());
+       holder.tvGia.setText("Giá:" + sanPham.getGiaTien() + "đ" );
        holder.tvSoLuong.setText(gh.getSoluong() + " ");
+        Picasso.get().load(sanPham.getImages()).into(holder.images);
+
+        holder.chkGioHang.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    //true
+                    untils.mangMuaHang.add(gh);
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+                }else {
+                  for (int i = 0; i<untils.mangMuaHang.size(); i++){
+                      if(untils.mangMuaHang.get(i).getMaSP() == gh.getMaSP()){
+                          untils.mangMuaHang.remove(i);
+                          EventBus.getDefault().postSticky(new TinhTongEvent());
+                      }
+                  }
+                }
+            }
+        });
 
        holder.setListenner(new IImageClichListener() {
            @Override
@@ -78,27 +106,34 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                holder.btnDelete.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
-                       AlertDialog.Builder buider = new AlertDialog.Builder(view.getRootView().getContext());
-                       buider.setTitle("Thông báo");
-                       buider.setMessage("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng!");
-                       buider.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                           @Override
-                           public void onClick(DialogInterface dialogInterface, int i) {
-                               untils.mangGioHang.remove(pos);
-                           }
-                       });
-
-                       buider.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                           @Override
-                           public void onClick(DialogInterface dialogInterface, int i) {
-                               dialogInterface.dismiss();
-                           }
-                       });
-                       buider.show();
+                       handleDeleteButtonClick(position);
                    }
                });
+
+//               holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+//                   @Override
+//                   public void onClick(View view) {
+//                       AlertDialog.Builder buider = new AlertDialog.Builder(view.getRootView().getContext());
+//                       buider.setTitle("Thông báo");
+//                       buider.setMessage("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng!");
+//                       buider.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                           @Override
+//                           public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                           }
+//                       });
+//
+//                       buider.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                           @Override
+//                           public void onClick(DialogInterface dialogInterface, int i) {
+//                               dialogInterface.dismiss();
+//                           }
+//                       });
+//                       buider.show();
+//                   }
+//               });
                holder.tvSoLuong.setText(lstGioHang.get(pos).getSoluong() + " ");
-               EventBus.getDefault().postSticky(new TinhTongEvent());
+              EventBus.getDefault().postSticky(new TinhTongEvent());
            }
        });
 
@@ -115,6 +150,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         ImageView btnDelete, images, imagesTru, imagesCong;
 
         IImageClichListener listenner;
+
+        CheckBox chkGioHang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvmaSP = itemView.findViewById(R.id.maSP_gioHang);
@@ -124,6 +161,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             tvSoLuong= itemView.findViewById(R.id.soLuong_gioHang);
             images = itemView.findViewById(R.id.images_gioHang);
 
+            chkGioHang = itemView.findViewById(R.id.item_gioHang_check);
             btnDelete = itemView.findViewById(R.id.btn_delete_gioHang);
 
             imagesTru = itemView.findViewById(R.id.item_gioHang_tru);
@@ -149,4 +187,13 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             }
         }
     }
+
+    private void handleDeleteButtonClick(int position) {
+        GioHang gioHang = lstGioHang.get(position);
+        lstGioHang.remove(position);
+        EventBus.getDefault().postSticky(new TinhTongEvent());
+        notifyDataSetChanged();
+        Toast.makeText(context, "Đã xoá sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
+    }
+
 }

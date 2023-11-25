@@ -1,6 +1,7 @@
 package com.example.duan1.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,7 @@ public class CTSanPhamAdapter extends RecyclerView.Adapter<CTSanPhamAdapter.View
             tvTenHang = itemView.findViewById(R.id.tvHangCTSP_kh);
             tvGia = itemView.findViewById(R.id.tvGiaCTSP_kh);
             tvMoTa = itemView.findViewById(R.id.tvMoTaCTSP_kh);
-
+            btnAddGioHang = itemView.findViewById(R.id.btnAddGioHang);
         }
     }
 }

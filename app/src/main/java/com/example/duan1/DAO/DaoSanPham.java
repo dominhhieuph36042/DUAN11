@@ -111,7 +111,7 @@ public class DaoSanPham {
     }
 
     public List<SanPham> getAll() {
-        String sql = "SELECT * FROM SANPHAM";
+        String sql = "SELECT * FROM SanPham";
         return getData(sql);
     }
 

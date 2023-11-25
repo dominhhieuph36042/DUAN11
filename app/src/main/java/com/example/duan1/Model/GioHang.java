@@ -8,16 +8,35 @@ public class GioHang {
     private String tenSP, hangSP;
     private int gia, soluong;
 
+    private String imagesGH;
+
     public GioHang() {
     }
 
-    public GioHang(int maGioHang, int maSP, String tenSP, String hangSP, int gia, int soluong) {
+    public GioHang(int maGioHang, int maSP, String tenSP, String hangSP, int gia, int soluong, String imagesGH) {
         this.maGioHang = maGioHang;
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.hangSP = hangSP;
         this.gia = gia;
         this.soluong = soluong;
+        this.imagesGH = imagesGH;
+    }
+
+    public int getMaGioHang() {
+        return maGioHang;
+    }
+
+    public void setMaGioHang(int maGioHang) {
+        this.maGioHang = maGioHang;
+    }
+
+    public String getImagesGH() {
+        return imagesGH;
+    }
+
+    public void setImagesGH(String imagesGH) {
+        this.imagesGH = imagesGH;
     }
 
     public int getMaSP() {
