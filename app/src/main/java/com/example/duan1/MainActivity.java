@@ -21,6 +21,7 @@ import com.example.duan1.DAO.DAOQuanTriVien;
 import com.example.duan1.Fragment.CTHDFragment;
 import com.example.duan1.Fragment.DoiMatKhauFragment;
 import com.example.duan1.Fragment.HoaDonFragment;
+import com.example.duan1.Fragment.QuanLyTKFragment;
 import com.example.duan1.Fragment.SanPhamFragment;
 import com.example.duan1.Fragment.Top10Fragment;
 import com.example.duan1.Fragment.TrangchuFragment;
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView_home.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.trangchu) {
+                if (item.getItemId() == R.id.trangchu) {
                     toolbar.setTitle(title[0]);
                     if (mCurrentFragment != FRAGMENT_TRANGCHU) {
                         replaceFragment(new TrangchuFragment());
@@ -126,19 +127,23 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new SanPhamFragment());
                         mCurrentFragment = FRAGMENT_SANPHAM;
                     }
-                    else if (item.getItemId() == R.id.doanhthu) {
-                        toolbar.setTitle(title[3]);
-                        if (mCurrentFragment != FRAGMENT_DOANHTHU) {
-                            replaceFragment(new CTHDFragment());
-                            mCurrentFragment = FRAGMENT_DOANHTHU;
-                        }
+                } else if (item.getItemId() == R.id.doanhthu) {
+                    toolbar.setTitle(title[3]);
+                    if (mCurrentFragment != FRAGMENT_DOANHTHU) {
+                        replaceFragment(new CTHDFragment());
+                        mCurrentFragment = FRAGMENT_DOANHTHU;
                     }
-                }   else if (item.getItemId() == R.id.top10) {
+                } else if (item.getItemId() == R.id.top10) {
                     toolbar.setTitle(title[4]);
-
                     if (mCurrentFragment != FRAGMENT_TOP10) {
                         replaceFragment(new Top10Fragment());
                         mCurrentFragment = FRAGMENT_TOP10;
+                    }
+                } else if (item.getItemId() == R.id.createAccount) {
+                    toolbar.setTitle(title[5]);
+                    if (mCurrentFragment != FRAGMENT_QUANLYTAIKHOAN) {
+                        replaceFragment(new QuanLyTKFragment());
+                        mCurrentFragment = FRAGMENT_QUANLYTAIKHOAN;
                     }
                 } else if (item.getItemId() == R.id.changePassword) {
                     toolbar.setTitle(title[6]);

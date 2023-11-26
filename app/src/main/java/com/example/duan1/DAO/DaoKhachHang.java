@@ -49,6 +49,15 @@ public class DaoKhachHang {
         return 1;
     }
 
+    public long delete(String id) {
+        return db.delete("KhachHang", "maKH = ?", new String[]{String.valueOf(id)});
+    }
+
+    public List<KhachHang> getAll() {
+        String sql = "SELECT * FROM KhachHang";
+        return getData(sql);
+    }
+
     private List<KhachHang> getData(String sql, String... selectionArgs){
         List<KhachHang> listKH = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, selectionArgs);
