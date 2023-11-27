@@ -5,10 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-
     public class DbHelper extends SQLiteOpenHelper {
         public static final String DB_NAME = "MobileManager";
-        public static final int VER_SION = 15;
+        public static final int VER_SION = 18;
       
 
         public DbHelper(Context context) {
@@ -42,6 +41,7 @@ import android.database.sqlite.SQLiteOpenHelper;
                     "tenHang TEXT NOT NULL)" ;
 
             db.execSQL(createTableHang);
+
             //Tạo bảng Sản Phẩm
             String createTableSanPham = "CREATE TABLE SanPham(" +
                     "maSP INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -86,6 +86,7 @@ import android.database.sqlite.SQLiteOpenHelper;
                     "trangThai TEXT NOT NULL," +
                     "ngay TEXT NOT NULL)";
             db.execSQL(createTableHoaDon);
+
             //Tạo bảng Chi tiết HĐ
             String createTableChiTietHoaDon = "CREATE TABLE ChiTietHoaDon(" +
                     "maCTHD INTEGER PRIMARY KEY AUTOINCREMENT," +
