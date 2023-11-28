@@ -49,6 +49,13 @@ public class DaoKhachHang {
         return 1;
     }
 
+    public long updatePass(KhachHang obj) {
+        ContentValues values = new ContentValues();
+        values.put("hoTen", obj.getHoTen());
+        values.put("matKhau", obj.getMatKhau());
+        return db.update("KhachHang", values, "maKH = ?", new String[]{String.valueOf(obj.getMaKH())});
+    }
+
     public long delete(String id) {
         return db.delete("KhachHang", "maKH = ?", new String[]{String.valueOf(id)});
     }
@@ -56,6 +63,12 @@ public class DaoKhachHang {
     public List<KhachHang> getAll() {
         String sql = "SELECT * FROM KhachHang";
         return getData(sql);
+    }
+
+    public KhachHang getID(String id) {
+        String sql = "SELECT * FROM KhachHang WHERE maKH=?";
+        List<KhachHang> list = getData(sql, id);
+        return list.get(0);
     }
 
     private List<KhachHang> getData(String sql, String... selectionArgs){
