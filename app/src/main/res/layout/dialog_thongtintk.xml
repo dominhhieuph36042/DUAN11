@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+   >
 
     <TextView
         android:layout_width="match_parent"
@@ -84,23 +86,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="20dp">
-        <Button
-            android:id="@+id/btnSaveTT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lưu"
-            android:layout_marginHorizontal="20dp"
 
-            android:backgroundTint="@color/gray_400"
-            android:layout_weight="1"/>
         <Button
             android:id="@+id/btnCancelTT"
-            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:background="@drawable/cus_bgr_btn_cancel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hủy"
-            android:backgroundTint="@color/blue_gray_400"
-            android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/black"
+
+            android:text="HỦY"/>
+        <Button
+            android:id="@+id/btnSaveTT"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/cus_bgr_btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lưu"/>
     </LinearLayout>
 
 

@@ -30,8 +30,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:text="MaQTV"/>
+                    android:textSize="20dp"
+                    android:text="Mã QTV"/>
                 <TextView
                     android:id="@+id/tvTenTT"
                     android:layout_width="match_parent"
@@ -39,15 +39,15 @@
                     android:textSize="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="TenTT"/>
+                    android:text="Tên tài khoản"/>
                 <TextView
                     android:id="@+id/tvMatKhau"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="MatKhau"/>
+                    android:text="Mật Khẩu"/>
             </LinearLayout>
 
         </LinearLayout>

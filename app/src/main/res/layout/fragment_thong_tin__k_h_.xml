@@ -63,27 +63,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnSaveUserChange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lưu"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:backgroundTint="#4CAF50"
-          />
+
 
         <Button
             android:id="@+id/btnCancelUserChange"
-            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:background="@drawable/cus_bgr_btn_cancel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hủy"
             android:layout_weight="1"
-            android:backgroundTint="#F44336"
-            android:textSize="20dp"
-            android:layout_marginLeft="50dp"
+            android:textColor="@color/black"
+
+            android:text="HỦY"
 
            />
+        <Button
+            android:id="@+id/btnSaveUserChange"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/cus_bgr_btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lưu"
+            />
 
     </LinearLayout>
 </LinearLayout>

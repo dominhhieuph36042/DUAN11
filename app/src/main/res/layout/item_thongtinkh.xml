@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
                     android:text="Mã khách "/>
                 <TextView
                     android:id="@+id/TenKH"
@@ -44,7 +44,7 @@
                     android:id="@+id/SdtKH"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Số điện thoại"/>
@@ -52,7 +52,7 @@
                     android:id="@+id/DiaChiKH"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Địa chỉ "/>
@@ -60,7 +60,7 @@
                     android:id="@+id/MatKhauKH"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Mật khẩu"/>
