@@ -74,7 +74,9 @@ public class GioHangActivity extends AppCompatActivity {
           }
       });
       rcvGioHang.setAdapter(gioAdapter);
-
+        if(untils.mangMuaHang != null){
+            untils.mangMuaHang.clear();
+        }
        tinhTongTien();
 
 //        bottm = findViewById(R.id.navigation);
