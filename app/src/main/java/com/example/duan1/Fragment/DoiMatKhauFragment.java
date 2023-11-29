@@ -163,5 +163,8 @@ public class DoiMatKhauFragment extends Fragment {
         return check;
     }
 
-
+    public static DoiMatKhauFragment newInstance(){
+        DoiMatKhauFragment fragment = new DoiMatKhauFragment();
+        return fragment;
+    }
 }

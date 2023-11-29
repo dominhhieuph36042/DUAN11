@@ -46,5 +46,9 @@ public class HoaDonFragment extends Fragment {
         return v;
     }
 
+    public static HoaDonFragment newInstance(){
+        HoaDonFragment fragment = new HoaDonFragment();
+        return fragment;
+    }
 
 }

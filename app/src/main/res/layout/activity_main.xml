@@ -36,4 +36,6 @@
         app:headerLayout="@layout/header_navigation_view"
         app:menu="@menu/drawer_navigation_home">
     </com.google.android.material.navigation.NavigationView>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

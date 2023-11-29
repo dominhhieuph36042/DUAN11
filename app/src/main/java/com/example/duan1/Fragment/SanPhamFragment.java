@@ -222,4 +222,9 @@ public class SanPhamFragment extends Fragment {
         });
         builder.show();
     }
+
+    public static SanPhamFragment newInstance(){
+        SanPhamFragment fragment = new SanPhamFragment();
+        return fragment;
+    }
 }

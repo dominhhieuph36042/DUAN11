@@ -76,4 +76,10 @@ public class QuanLyTKFragment extends Fragment {
         AlertDialog alert = builder.create();
         builder.show();
     }
+
+    public static QuanLyTKFragment newInstance(){
+        QuanLyTKFragment fragment = new QuanLyTKFragment();
+        return fragment;
+    }
+
 }
