@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
     public class DbHelper extends SQLiteOpenHelper {
         public static final String DB_NAME = "MobileManager";
-        public static final int VER_SION = 18;
+        public static final int VER_SION = 21;
       
 
         public DbHelper(Context context) {
@@ -79,23 +79,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
             //Tạo bảng hóa đơn
             String createTableHoaDon = "CREATE TABLE HoaDon(" +
-                    "maHD TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                    "maNV TEXT NOT NULL REFERENCES NhanVien(maNV) ON DELETE CASCADE ON UPDATE CASCADE," +
-                    "maKH TEXT REFERENCES KhachHang(maKH) ON DELETE CASCADE ON UPDATE CASCADE," +
-                    "phanLoai INTEGER NOT NULL," +
-                    "trangThai TEXT NOT NULL," +
-                    "ngay TEXT NOT NULL)";
+                    "idHoaDon INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "maKH TEXT REFERENCES KhachHang(maKH) NOT NULL ," +
+                    "tongTien INTEGER NOT NULL," +
+                    "ngayDat TEXT NOT NULL)";
             db.execSQL(createTableHoaDon);
 
             //Tạo bảng Chi tiết HĐ
             String createTableChiTietHoaDon = "CREATE TABLE ChiTietHoaDon(" +
-                    "maCTHD INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "maHD NOT NULL REFERENCES HoaDon(maHD) ON DELETE CASCADE ON UPDATE CASCADE," +
-                    "maSP NOT NULL REFERENCES SanPham(maSP) ON DELETE CASCADE ON UPDATE CASCADE," +
+                    "idCTHoaDon INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idHoaDon INTEGER REFERENCES HoaDon(idHoaDon) NOT NULL," +
+                    "maSP INTEGER REFERENCES SanPham(maSP) NOT NULL," +
                     "soLuong INTEGER NOT NULL," +
-                    "giamGia INTEGER," +
-                    "donGia TEXT NOT NULL," +
-                    "baoHanh INTEGER)";
+                    "giaTien INTEGER  NOT NULL," +
+                    "note TEXT NOT NULL)";
             db.execSQL(createTableChiTietHoaDon);
 
             String add_QuanTriVien = "INSERT INTO QuanTriVien VALUES" +

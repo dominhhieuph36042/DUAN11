@@ -1,49 +1,54 @@
 package com.example.duan1.Model;
 
 public class ChiTietHoaDon {
+    private int idCTHD;
+    private int idHoaDon;
+    private int maSP;
+    private int soLuong, giaTien;
 
-    private int CTHD;
-    private String maHD;
-    private String maSP;
-    private int soLuong;
-    private int donGia;
-    private int giamGia;
-    private int baoHanh;
+    private String note;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int CTHD, String maHD, String maSP, int soLuong, int donGia, int giamGia, int baoHanh) {
-        this.CTHD = CTHD;
-        this.maHD = maHD;
+    public ChiTietHoaDon(int idCTHD, int idHoaDon, int maSP, int soLuong, int giaTien, String note) {
+        this.idCTHD = idCTHD;
+        this.idHoaDon = idHoaDon;
         this.maSP = maSP;
         this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.giamGia = giamGia;
-        this.baoHanh = baoHanh;
+        this.giaTien = giaTien;
+        this.note = note;
     }
 
-    public int getCTHD() {
-        return CTHD;
+    public String getNote() {
+        return note;
     }
 
-    public void setCTHD(int CTHD) {
-        this.CTHD = CTHD;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getMaHD() {
-        return maHD;
+    public int getIdCTHD() {
+        return idCTHD;
     }
 
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
+    public void setIdCTHD(int idCTHD) {
+        this.idCTHD = idCTHD;
     }
 
-    public String getMaSP() {
+    public int getIdHoaDon() {
+        return idHoaDon;
+    }
+
+    public void setIdHoaDon(int idHoaDon) {
+        this.idHoaDon = idHoaDon;
+    }
+
+    public int getMaSP() {
         return maSP;
     }
 
-    public void setMaSP(String maSP) {
+    public void setMaSP(int maSP) {
         this.maSP = maSP;
     }
 
@@ -55,27 +60,11 @@ public class ChiTietHoaDon {
         this.soLuong = soLuong;
     }
 
-    public double getDonGia() {
-        return donGia;
+    public int getGiaTien() {
+        return giaTien;
     }
 
-    public void setDonGia(int donGia) {
-        this.donGia = donGia;
-    }
-
-    public int getGiamGia() {
-        return giamGia;
-    }
-
-    public void setGiamGia(int giamGia) {
-        this.giamGia = giamGia;
-    }
-
-    public int getBaoHanh() {
-        return baoHanh;
-    }
-
-    public void setBaoHanh(int baoHanh) {
-        this.baoHanh = baoHanh;
+    public void setGiaTien(int giaTien) {
+        this.giaTien = giaTien;
     }
 }

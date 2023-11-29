@@ -1,13 +1,13 @@
 package com.example.duan1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duan1.DAO.DaoKhachHang;
 
@@ -41,10 +41,12 @@ public class DangKy_KH extends AppCompatActivity {
             }
         });
 
+
         btnDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               String user = edTaiKhoan.getText().toString();
+
+                String user = edTaiKhoan.getText().toString();
                 String pass = edMatKhau.getText().toString();
                 String conf = edConf.getText().toString();
                 String hoTen = edHoTen.getText().toString();
@@ -67,5 +69,8 @@ public class DangKy_KH extends AppCompatActivity {
             }
         });
 
+//        Intent i = new Intent();
+//        i.putExtra("maKH", user);
+//        startActivity(i);
     }
 }

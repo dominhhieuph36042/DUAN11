@@ -1,16 +1,14 @@
 package com.example.duan1;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.duan1.DAO.DaoGioHang;
 import com.example.duan1.DAO.DaoSanPham;
@@ -59,8 +57,6 @@ public class ChiTietSanPham extends AppCompatActivity {
 
         Picasso.get().load(sp.getImages()).into(images);
 
-
-
       initControl();
     }
 
@@ -71,6 +67,8 @@ public class ChiTietSanPham extends AppCompatActivity {
             public void onClick(View view) {
                 theGioHang();
                 Toast.makeText(ChiTietSanPham.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(ChiTietSanPham.this, GioHangActivity.class);
+                startActivity(in);
             }
         });
     }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1.Adapter.SanPhamAdapter;
 import com.example.duan1.Adapter.SanPhamKHAdapter;
 import com.example.duan1.DAO.DaoSanPham;
 import com.example.duan1.Model.IClickItemRCV;

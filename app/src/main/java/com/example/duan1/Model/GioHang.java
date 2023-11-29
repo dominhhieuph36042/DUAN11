@@ -10,6 +10,16 @@ public class GioHang {
 
     private String imagesGH;
 
+    boolean isCheck;
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
+
     public GioHang() {
     }
 

@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +19,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1.Adapter.HangSpinnerAdapter;
 import com.example.duan1.Adapter.SanPhamAdapter;
-import com.example.duan1.DAO.DaoHD;
-import com.example.duan1.DAO.DaoHang;
 import com.example.duan1.DAO.DaoSanPham;
-import com.example.duan1.Model.Hang;
 import com.example.duan1.Model.IClickItemRCV;
 import com.example.duan1.Model.SanPham;
 import com.example.duan1.R;
@@ -44,7 +37,7 @@ public class SanPhamFragment extends Fragment {
      private FragmentSanPhamBinding binding;
     ArrayList<SanPham> lstSanPham;
 
-    DaoHD daoHD;
+
 
     FloatingActionButton btn_add;
     static DaoSanPham sanPhamDao;
@@ -67,7 +60,7 @@ public class SanPhamFragment extends Fragment {
 
         lstSanPham = new ArrayList<>();
         sanPhamDao = new DaoSanPham(getContext());
-        daoHD = new DaoHD(getContext());
+
         btn_add = v.findViewById(R.id.btn_add);
         loadData();
         btn_add.setOnClickListener(new View.OnClickListener() {

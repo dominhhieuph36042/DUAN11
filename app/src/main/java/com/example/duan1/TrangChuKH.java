@@ -72,6 +72,14 @@ public class TrangChuKH extends AppCompatActivity {
         if (untils.mangGioHang == null){
             untils.mangGioHang = new ArrayList<>();
         }
+
+        if (untils.donHangAdmin == null){
+            untils.donHangAdmin = new ArrayList<>();
+        }
+
+        if (untils.hoadonAdmin == null){
+            untils.hoadonAdmin = new ArrayList<>();
+        }
     }
 
     private void replaceFragment(Fragment fragment) {

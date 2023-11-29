@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.ChiTietHoaDon;
@@ -13,83 +14,102 @@ import java.util.List;
 
 public class DaoCTHD {
 
-    private SQLiteDatabase db;
+    private DbHelper dbHelper;
 
-    public DaoCTHD(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
-        db = dbHelper.getWritableDatabase();
+    public DaoCTHD(Context context){
+        this.dbHelper = new DbHelper(context);
     }
 
-    public long insert(ChiTietHoaDon obj) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("CTHD",obj.getCTHD());
-        contentValues.put("maHD",obj.getMaHD());
-        contentValues.put("maSP",obj.getMaSP());
-        contentValues.put("soLuong",obj.getSoLuong());
-        contentValues.put("donGia",obj.getDonGia());
-        contentValues.put("giamGia",obj.getGiamGia());
-        contentValues.put("baoHanh",obj.getBaoHanh());
 
-        return db.insert("ChiTietHoaDon",null,contentValues);
+    public ChiTietHoaDon getID(int id) {
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE idCTHoaDon=?";
+        List<ChiTietHoaDon> list = getData(sql, String.valueOf(id));
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
     }
 
-    public long update(ChiTietHoaDon obj) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("CTHD",obj.getCTHD());
-        contentValues.put("maHD",obj.getMaHD());
-        contentValues.put("maSP",obj.getMaSP());
-        contentValues.put("soLuong",obj.getSoLuong());
-        contentValues.put("donGia",obj.getDonGia());
-        contentValues.put("giamGia",obj.getGiamGia());
-        contentValues.put("baoHanh",obj.getBaoHanh());
+    public List<ChiTietHoaDon> getAllByIDHD(String id){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<ChiTietHoaDon> list = new ArrayList<>();
 
-        return db.update("ChiTietHoaDon",contentValues,"CTHD= ?",new String[]{String.valueOf(obj.getMaHD())});
-    }
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE idHoaDon =?";
 
-    public int delete(String id) {
-        return db.delete("ChiTietHoaDon","CTHD = ?",new String[]{String.valueOf(id)});
-    }
+        Cursor c = db.rawQuery(sql, new String[]{id});
 
-    private List<ChiTietHoaDon> getData(String sql, String ... selectionArgs) {
-        List<ChiTietHoaDon> lstPM = new ArrayList<>();
-        Cursor cursor = db.rawQuery(sql,selectionArgs);
-        while (cursor.moveToNext()) {
-            lstPM.add(new ChiTietHoaDon(
-                    Integer.parseInt(cursor.getString(0)),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    Integer.parseInt(cursor.getString(3)),
-                    Integer.parseInt(cursor.getString(4)),
-                    Integer.parseInt(cursor.getString(5)),
-                    Integer.parseInt(cursor.getString(6))
-
-
+        while (c.moveToNext()){
+            list.add(new ChiTietHoaDon(
+                    c.getInt(0),
+                    c.getInt(1),
+                    c.getInt(2),
+                    c.getInt(3),
+                    c.getInt(4),
+                    c.getString(5)
             ));
         }
 
-        return lstPM;
+        if (c != null) {
+            c.close();
+        }
+
+        if (db != null) {
+            db.close();
+        }
+        return list;
     }
 
-    public ChiTietHoaDon getID (String id) {
-        String sql = "SELECT * FROM ChiTietHoaDon WHERE CTHD = ?";
-        List<ChiTietHoaDon> lstTV = getData(sql,id);
-        return lstTV.get(0);
+    public boolean insert(ChiTietHoaDon object) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "INSERT INTO ChiTietHoaDon" + "( idHoaDon, maSP, soLuong, giaTien, note) " + " VALUES(?,?,?,?,?)";
+        db.execSQL(sql, new String[]{String.valueOf(object.getIdHoaDon()),
+                String.valueOf(object.getMaSP()),
+                String.valueOf(object.getSoLuong()),
+                String.valueOf(object.getGiaTien()),
+                object.getNote()
+        });
 
+        Log.i("TAG", "Giá: " + object.getGiaTien());
+
+        if (db != null) {
+            db.close();
+        }
+        return true;
     }
 
     public List<ChiTietHoaDon> getAll() {
-        String sql = "SELECT * FROM CHITIETHOADON";
-        return getData(sql);
-    }
-    public boolean checkID(String id,String value) {
-        String Query = "Select * from ChiTietHoaDon  where " + id +  " = " + value;
-        Cursor cursor = db.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
-            return false;
+        String sql = "SELECT * FROM ChiTietHoaDon" ;
+        List<ChiTietHoaDon> list = getData(sql);
+        if (list.size() > 0) {
+            return list;
         }
-        cursor.close();
-        return true;
+        return null;
+    }
+
+
+    private List<ChiTietHoaDon> getData(String sql, String... selectionArgs){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<ChiTietHoaDon> list = new ArrayList<>();
+
+        Cursor c = db.rawQuery(sql, selectionArgs);
+        while (c.moveToNext()){
+            list.add(new ChiTietHoaDon(
+                    c.getInt(0),
+                    c.getInt(1),
+                    c.getInt(2),
+                    c.getInt(3),
+                    c.getInt(4),
+                    c.getString(5)
+            ));
+        }
+
+        if (c != null) {
+            c.close();
+        }
+        if (db != null) {
+            db.close();
+        }
+        return list;
     }
 
 }

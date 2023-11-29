@@ -1,5 +1,6 @@
 package com.example.duan1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,13 +34,13 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHolder> {
 
     private Context context;
     private List<GioHang> lstGioHang;
 
-    private ArrayList<SanPham> lstSanPham;
-    DaoSanPham spDao;
+
     IClickItemRCV clickItemRCV;
 
     public GioHangAdapter(Context context, List<GioHang> lstGioHang, IClickItemRCV clickItemRCV) {
@@ -50,14 +51,14 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
 
     @NonNull
     @Override
-    public GioHangAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_giohang,parent,false);
         return new ViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GioHangAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
        GioHang gh = lstGioHang.get(position);
 
        DaoSanPham daosp = new DaoSanPham(context);
@@ -75,9 +76,13 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
                     //true
-                    untils.mangMuaHang.add(gh);
+                    untils.mangGioHang.get(holder.getAdapterPosition()).setCheck(true);
+                        if (!untils.mangMuaHang.contains(gh)){
+                            untils.mangMuaHang.add(gh); 
+                        }
                     EventBus.getDefault().postSticky(new TinhTongEvent());
                 }else {
+                    untils.mangGioHang.get(holder.getAdapterPosition()).setCheck(false);
                   for (int i = 0; i<untils.mangMuaHang.size(); i++){
                       if(untils.mangMuaHang.get(i).getMaSP() == gh.getMaSP()){
                           untils.mangMuaHang.remove(i);
@@ -88,6 +93,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             }
         });
 
+        holder.chkGioHang.setChecked(gh.isCheck());
+
        holder.setListenner(new IImageClichListener() {
            @Override
            public void onImageClick(View view, int pos, int giaTri) {
@@ -95,11 +102,13 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                  if(lstGioHang.get(pos).getSoluong() > 1){
                      int soLuongMoi = lstGioHang.get(pos).getSoluong()-1;
                      lstGioHang.get(pos).setSoluong(soLuongMoi);
+                     notifyDataSetChanged();
                  }
                } else if(giaTri == 2){
                    if(lstGioHang.get(pos).getSoluong() < 100){
                        int soLuongMoi = lstGioHang.get(pos).getSoluong()+1;
                        lstGioHang.get(pos).setSoluong(soLuongMoi);
+                       notifyDataSetChanged();
                    }
                }
 
@@ -191,6 +200,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     private void handleDeleteButtonClick(int position) {
         GioHang gioHang = lstGioHang.get(position);
         lstGioHang.remove(position);
+        untils.mangMuaHang.remove(gioHang);
         EventBus.getDefault().postSticky(new TinhTongEvent());
         notifyDataSetChanged();
         Toast.makeText(context, "Đã xoá sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();

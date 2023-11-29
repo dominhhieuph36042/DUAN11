@@ -1,7 +1,6 @@
 package com.example.duan1.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.DAO.DaoSanPham;
-import com.example.duan1.MainActivity;
-import com.example.duan1.Model.CTSanPham;
 import com.example.duan1.Model.IClickItemRCV;
 import com.example.duan1.Model.SanPham;
 import com.example.duan1.R;
-import com.example.duan1.databinding.ItemCtspBinding;
 import com.example.duan1.demo.Cart;
 
 import java.util.List;
@@ -40,13 +36,13 @@ public class CTSanPhamAdapter extends RecyclerView.Adapter<CTSanPhamAdapter.View
     }
     @NonNull
     @Override
-    public CTSanPhamAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ctsp, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CTSanPhamAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SanPham sp =lstSP.get(position);
         addToCart = new Cart();
 

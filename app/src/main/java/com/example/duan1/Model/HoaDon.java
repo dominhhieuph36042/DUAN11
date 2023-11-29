@@ -1,41 +1,28 @@
 package com.example.duan1.Model;
 
 public class HoaDon {
-    private String maHD;
-    private String maNV;
+
+    private int idDonHang;
     private String maKH;
-    private int phanLoai;
-    private String ngay;
-    private String trangThai;
-
-
+    private int tongTien;
+    private String ngayDat;
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHD, String maNV, String maKH, int phanLoai, String ngay, String trangThai) {
-        this.maHD = maHD;
-        this.maNV = maNV;
+    public HoaDon(int idDonHang, String maKH, int tongTien, String ngayDat) {
+        this.idDonHang = idDonHang;
         this.maKH = maKH;
-        this.phanLoai = phanLoai;
-        this.ngay = ngay;
-        this.trangThai = trangThai;
+        this.tongTien = tongTien;
+        this.ngayDat = ngayDat;
     }
 
-    public String getMaHD() {
-        return maHD;
+    public int getIdDonHang() {
+        return idDonHang;
     }
 
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
-    }
-
-    public String getMaNV() {
-        return maNV;
-    }
-
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public void setIdDonHang(int idDonHang) {
+        this.idDonHang = idDonHang;
     }
 
     public String getMaKH() {
@@ -46,27 +33,19 @@ public class HoaDon {
         this.maKH = maKH;
     }
 
-    public int getPhanLoai() {
-        return phanLoai;
+    public int getTongTien() {
+        return tongTien;
     }
 
-    public void setPhanLoai(int phanLoai) {
-        this.phanLoai = phanLoai;
+    public void setTongTien(int tongTien) {
+        this.tongTien = tongTien;
     }
 
-    public String getNgay() {
-        return ngay;
+    public String getNgayDat() {
+        return ngayDat;
     }
 
-    public void setNgay(String ngay) {
-        this.ngay = ngay;
-    }
-
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
+    public void setNgayDat(String ngayDat) {
+        this.ngayDat = ngayDat;
     }
 }
