@@ -23,7 +23,7 @@ import android.database.sqlite.SQLiteOpenHelper;
                             "hoTen TEXT NOT NULL, " +
                             "matKhau TEXT NOT NULL)";
             db.execSQL(createTableQuanTriVien);
-            //Tạo bảng Nhân Viên
+
 
             //Tạo bảng Khách hàng
             String createTableKhachHang = "CREATE TABLE KhachHang(" +
@@ -35,12 +35,7 @@ import android.database.sqlite.SQLiteOpenHelper;
             db.execSQL(createTableKhachHang);
 
 
-            //Tạo bảng Hãng
-            String createTableHang = "CREATE TABLE Hang(" +
-                    "maHang TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                    "tenHang TEXT NOT NULL)" ;
 
-            db.execSQL(createTableHang);
 
             //Tạo bảng Sản Phẩm
             String createTableSanPham = "CREATE TABLE SanPham(" +

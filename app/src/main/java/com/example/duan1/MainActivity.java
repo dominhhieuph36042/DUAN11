@@ -18,17 +18,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.duan1.DAO.DAOQuanTriVien;
-import com.example.duan1.Fragment.CTHDFragment;
+import com.example.duan1.Fragment.DoanhThuFragment;
 import com.example.duan1.Fragment.DoiMatKhauFragment;
 import com.example.duan1.Fragment.HoaDonFragment;
 import com.example.duan1.Fragment.QuanLyTKFragment;
 import com.example.duan1.Fragment.SanPhamFragment;
 import com.example.duan1.Fragment.Top10Fragment;
 import com.example.duan1.Fragment.TrangchuFragment;
-import com.example.duan1.Fragment.thongtintaikhoan;
 import com.example.duan1.Model.DangNhapActivity;
 import com.example.duan1.Model.QuanTriVien;
-import com.example.duan1.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,12 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_HOADON = 1;
     private static final int FRAGMENT_SANPHAM = 2;
 
-    private static final int FRAGMENT_DOANHTHU = 3;
 
-    private static final int FRAGMENT_TOP10 = 4;
-    private static final int FRAGMENT_QUANLYTAIKHOAN = 5;
+    private static final int FRAGMENT_QUANLYTAIKHOAN = 3;
 
-    private static final int FRAGMENT_THONGTINTAIKHOAN = 6;
+    private static final int FRAGMENT_THONGTINTAIKHOAN = 4;
 
 
     private int mCurrentFragment = FRAGMENT_TRANGCHU;
@@ -56,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
     String[] title = {"Trang chủ ",
             "Quản lý đơn hàng  ",
             "Quản lý sản phẩm ",
-            "Doanh thu ",
-            "Top 10 sản phẩm ",
             "Quản lý tài khoản ",
             "Thông tin tài khoản"};
     TextView tv_username;
@@ -121,32 +115,24 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new HoaDonFragment());
                         mCurrentFragment = FRAGMENT_HOADON;
                     }
-                } else if (item.getItemId() == R.id.sanPham) {
+                }
+                else if (item.getItemId() == R.id.sanPham) {
                     toolbar.setTitle(title[2]);
                     if (mCurrentFragment != FRAGMENT_SANPHAM) {
                         replaceFragment(new SanPhamFragment());
                         mCurrentFragment = FRAGMENT_SANPHAM;
                     }
-                } else if (item.getItemId() == R.id.doanhthu) {
+                }
+
+                else if (item.getItemId() == R.id.createAccount) {
                     toolbar.setTitle(title[3]);
-                    if (mCurrentFragment != FRAGMENT_DOANHTHU) {
-                        replaceFragment(new CTHDFragment());
-                        mCurrentFragment = FRAGMENT_DOANHTHU;
-                    }
-                } else if (item.getItemId() == R.id.top10) {
-                    toolbar.setTitle(title[4]);
-                    if (mCurrentFragment != FRAGMENT_TOP10) {
-                        replaceFragment(new Top10Fragment());
-                        mCurrentFragment = FRAGMENT_TOP10;
-                    }
-                } else if (item.getItemId() == R.id.createAccount) {
-                    toolbar.setTitle(title[5]);
                     if (mCurrentFragment != FRAGMENT_QUANLYTAIKHOAN) {
                         replaceFragment(new QuanLyTKFragment());
                         mCurrentFragment = FRAGMENT_QUANLYTAIKHOAN;
                     }
-                } else if (item.getItemId() == R.id.changePassword) {
-                    toolbar.setTitle(title[6]);
+                }
+                else if (item.getItemId() == R.id.changePassword) {
+                    toolbar.setTitle(title[4]);
                     if (mCurrentFragment != FRAGMENT_THONGTINTAIKHOAN) {
                         replaceFragment(new DoiMatKhauFragment());
                         mCurrentFragment = FRAGMENT_THONGTINTAIKHOAN;
@@ -196,5 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
         tv_username = navigationView_home.getHeaderView(0).findViewById(R.id.tv_username);
     }
-    //Anh em thich toi dung khong
+
+
 }

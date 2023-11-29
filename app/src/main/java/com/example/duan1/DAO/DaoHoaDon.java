@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.ChiTietHoaDon;
 import com.example.duan1.Model.HoaDon;
+import com.example.duan1.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,13 @@ public class DaoHoaDon {
         return getData(sql);
     }
 
-    private List<HoaDon> getData(String sql, String... selectionArgs){
+    public HoaDon getID (String idHoaDon) {
+        String sql = "SELECT * FROM HoaDon WHERE idHoaDon = ?";
+        List<HoaDon> lstTT = getData(sql,idHoaDon);
+        return lstTT.get(0);
+    }
+
+    public List<HoaDon> getData(String sql, String... selectionArgs){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         List<HoaDon> list =  new ArrayList<>();
 
