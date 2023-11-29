@@ -13,11 +13,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.duan1.Adapter.GioHangAdapter;
 import com.example.duan1.DAO.DaoGioHang;
 import com.example.duan1.DAO.DaoSanPham;
+import com.example.duan1.Fragment.HoaDonFragment;
 import com.example.duan1.Fragment.Home_KH_Fragment;
 import com.example.duan1.Fragment.ThongTin_KH_Fragment;
 import com.example.duan1.Model.EventBus.TinhTongEvent;
@@ -61,6 +64,7 @@ public class GioHangActivity extends AppCompatActivity {
         daoSanPham = new DaoSanPham(this);
         daoGH = new DaoGioHang(this);
 
+
 //       untils.mangGioHang = daoGH.getAll();
 
       rcvGioHang = findViewById(R.id.rcv_gioHang);
@@ -79,41 +83,7 @@ public class GioHangActivity extends AppCompatActivity {
         }
        tinhTongTien();
 
-//        bottm = findViewById(R.id.navigation);
-//        bottm.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                if(item.getItemId() == R.id.navigation_home){
-//                    Home_KH_Fragment home = new Home_KH_Fragment();
-//                    replaceFragment(home);
-//                } else if(item.getItemId() == R.id.navigation_person){
-//                    ThongTin_KH_Fragment thongTin = new ThongTin_KH_Fragment();
-//                    replaceFragment(thongTin);
-//                } else if(item.getItemId() == R.id.navigation_cart){
-//                    startActivity(new Intent(GioHangActivity.this, GioHangActivity.class));
-//                } else if(item.getItemId() == R.id.navigation_out){
-//                    AlertDialog.Builder buider = new AlertDialog.Builder(GioHangActivity.this);
-//                    buider.setMessage("Bạn có muốn đăng xuất?");
-//                    buider.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            startActivity(new Intent(GioHangActivity.this, DangNhap_KH.class));
-//                        }
-//                    });
-//
-//                    buider.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            dialogInterface.dismiss();
-//                        }
-//                    });
-//
-//                    buider.create();
-//                    buider.show();
-//                }
-//                return true;
-//            }
-//        });
+
     }
 
     private void tinhTongTien() {
@@ -150,4 +120,6 @@ public class GioHangActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_container, fragment);
         fragmentTransaction.commit();
     }
+
+    
 }
