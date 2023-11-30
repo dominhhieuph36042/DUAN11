@@ -50,7 +50,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return lstHoaDon.size();
+        return lstHoaDon != null ? lstHoaDon.size() : 0 ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
