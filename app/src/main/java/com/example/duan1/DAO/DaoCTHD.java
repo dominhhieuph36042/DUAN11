@@ -1,6 +1,5 @@
 package com.example.duan1.DAO;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -63,10 +62,10 @@ public class DaoCTHD {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql = "INSERT INTO ChiTietHoaDon" + "( idHoaDon, maSP, soLuong, giaTien, note) " + " VALUES(?,?,?,?,?)";
         db.execSQL(sql, new String[]{String.valueOf(object.getIdHoaDon()),
-                String.valueOf(object.getMaSP()),
-                String.valueOf(object.getSoLuong()),
-                String.valueOf(object.getGiaTien()),
-                object.getNote()
+                                     String.valueOf(object.getMaSP()),
+                                     String.valueOf(object.getSoLuong()),
+                                     String.valueOf(object.getGiaTien()),
+                                     object.getNote()
         });
 
         Log.i("TAG", "Giá: " + object.getGiaTien());
@@ -94,12 +93,12 @@ public class DaoCTHD {
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()){
             list.add(new ChiTietHoaDon(
-                    c.getInt(0),
-                    c.getInt(1),
-                    c.getInt(2),
-                    c.getInt(3),
-                    c.getInt(4),
-                    c.getString(5)
+               c.getInt(0),
+               c.getInt(1),
+               c.getInt(2),
+               c.getInt(3),
+               c.getInt(4),
+               c.getString(5)
             ));
         }
 
@@ -111,5 +110,9 @@ public class DaoCTHD {
         }
         return list;
     }
+    }
 
-}
+
+
+
+

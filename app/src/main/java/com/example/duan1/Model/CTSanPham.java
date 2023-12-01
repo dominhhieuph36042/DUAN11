@@ -12,7 +12,7 @@ public class CTSanPham {
     public CTSanPham() {
     }
 
-    public CTSanPham(String maCTSP, String maSP, String tenCTSP, String hangCTSP,  int giaTien ,String moTa) {
+    public CTSanPham(String maCTSP, String maSP, String tenCTSP, String hangCTSP, int giaTien , String moTa) {
         this.maCTSP = maCTSP;
         this.maSP = maSP;
         this.tenCTSP = tenCTSP;

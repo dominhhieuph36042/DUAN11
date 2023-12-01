@@ -10,8 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.DAO.DaoKhachHang;
+import com.example.duan1.DAO.DaoSanPham;
 import com.example.duan1.Model.HoaDon;
 import com.example.duan1.Model.KhachHang;
+import com.example.duan1.Model.SanPham;
 import com.example.duan1.R;
 
 import java.util.List;
@@ -21,6 +23,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     private RecyclerView.RecycledViewPool viewpool = new RecyclerView.RecycledViewPool();
     Context context;
     List<HoaDon> lstHoaDon;
+
+
 
     public DonHangAdapter(Context context, List<HoaDon> lstHoaDon) {
         this.context = context;
@@ -37,25 +41,29 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DaoKhachHang daoKH = new DaoKhachHang(context);
-       HoaDon hoaDon = lstHoaDon.get(position);
+        DaoSanPham daoSP = new DaoSanPham(context);
+
+        HoaDon hoaDon = lstHoaDon.get(position);
+
+        SanPham sanPham = daoSP.getID(String.valueOf(hoaDon.getMaSP()));
 
         holder.txtdonHang.setText("Đơn hàng:" + hoaDon.getIdDonHang());
 
         KhachHang kh = daoKH.getID(hoaDon.getMaKH());
         holder.txtMakh.setText("Mã khách hàng:" + kh.getMaKH());
-        holder.txtTongTien.setText("Tổng tiền:" + hoaDon.getTongTien() +" đ");
-
+        holder.txtTenSP.setText("Tên sản phẩm:" + sanPham.getTenSP());
+        holder.txtTongTien.setText("Tổng tiền:" + String.valueOf(hoaDon.getTongTien()) +" đ");
         holder.txtNgayDat.setText("Ngày đặt:" + hoaDon.getNgayDat());
     }
 
     @Override
     public int getItemCount() {
-        return lstHoaDon != null ? lstHoaDon.size() : 0 ;
+         return lstHoaDon != null ? lstHoaDon.size():0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView  txtdonHang, txtMakh, txtTongTien, txtNgayDat;
+        TextView  txtdonHang, txtMakh, txtTongTien, txtNgayDat, txtTenSP;
         RecyclerView reChiTiet;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +71,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             txtMakh = itemView.findViewById(R.id.idKhachHang);
             txtTongTien = itemView.findViewById(R.id.tongTien);
             txtNgayDat = itemView.findViewById(R.id.ngayDat);
+            txtTenSP  = itemView.findViewById(R.id.idSanPham);
         }
     }
 }

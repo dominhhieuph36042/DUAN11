@@ -1,8 +1,6 @@
 package com.example.duan1.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1.ChiTietSanPham;
 import com.example.duan1.DAO.DaoSanPham;
 import com.example.duan1.Model.IClickItemCTSPKH;
 import com.example.duan1.Model.IClickItemRCV;

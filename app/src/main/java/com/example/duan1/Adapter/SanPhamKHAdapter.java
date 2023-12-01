@@ -34,13 +34,13 @@ public class SanPhamKHAdapter extends RecyclerView.Adapter<SanPhamKHAdapter.View
 
     @NonNull
     @Override
-    public SanPhamKHAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sanpham_kh,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SanPhamKHAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SanPham sanPham = lstSPKH.get(position);
 
         holder.tvMASP.setText("Mã Sản phẩm:SP " + sanPham.getMaSP());

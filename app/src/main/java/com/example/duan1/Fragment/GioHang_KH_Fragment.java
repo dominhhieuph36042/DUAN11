@@ -1,4 +1,4 @@
-//package com.example.duan1.Fragment;
+package com.example.duan1.Fragment;//package com.example.duan1.Fragment;
 //
 //import android.os.Bundle;
 //import android.view.LayoutInflater;

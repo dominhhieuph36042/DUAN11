@@ -1,41 +1,28 @@
 package com.example.duan1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.Adapter.GioHangAdapter;
 import com.example.duan1.DAO.DaoGioHang;
 import com.example.duan1.DAO.DaoHoaDon;
 import com.example.duan1.DAO.DaoKhachHang;
 import com.example.duan1.DAO.DaoSanPham;
-import com.example.duan1.Fragment.HoaDonFragment;
-import com.example.duan1.Fragment.Home_KH_Fragment;
-import com.example.duan1.Fragment.ThongTin_KH_Fragment;
 import com.example.duan1.Model.EventBus.TinhTongEvent;
 import com.example.duan1.Model.GioHang;
 import com.example.duan1.Model.HoaDon;
 import com.example.duan1.Model.IClickItemRCV;
 import com.example.duan1.Model.KhachHang;
-import com.example.duan1.Model.SanPham;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -44,12 +31,10 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class GioHangActivity extends AppCompatActivity {
-
-
+    
     RecyclerView rcvGioHang;
     ArrayList<GioHang> lstGioHang;
 
@@ -79,32 +64,32 @@ public class GioHangActivity extends AppCompatActivity {
         lstGioHang = new ArrayList<>();
         daoSanPham = new DaoSanPham(this);
         daoGH = new DaoGioHang(this);
+        
+
+      rcvGioHang = findViewById(R.id.rcv_gioHang);
+
+      RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+      rcvGioHang.setLayoutManager(layoutManager);
+      gioAdapter = new GioHangAdapter(getApplicationContext(), untils.mangGioHang, new IClickItemRCV() {
+          @Override
+          public void iclickItem(RecyclerView.ViewHolder viewHolder, int position, int type) {
+
+          }
+      });
+      rcvGioHang.setAdapter(gioAdapter);
 
 
-        rcvGioHang = findViewById(R.id.rcv_gioHang);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        rcvGioHang.setLayoutManager(layoutManager);
-        gioAdapter = new GioHangAdapter(getApplicationContext(), untils.mangGioHang, new IClickItemRCV() {
-            @Override
-            public void iclickItem(RecyclerView.ViewHolder viewHolder, int position, int type) {
-
-            }
-        });
-        rcvGioHang.setAdapter(gioAdapter);
-
-
-        intColtrol();
-
-        if(untils.mangMuaHang != null){
-            untils.mangMuaHang.clear();
-        }
-        tinhTongTien();
-
+       intColtrol();
 
         if(untils.mangMuaHang != null){
             untils.mangMuaHang.clear();
         }
+       tinhTongTien();
+
+
+       if(untils.mangMuaHang != null){
+           untils.mangMuaHang.clear();
+       }
         tinhTongTien();
 //        bottm = findViewById(R.id.navigation);
 //        bottm.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -149,14 +134,14 @@ public class GioHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 themDonHang();
-                for (int i =0; i<untils.mangMuaHang.size();i++){
-                    GioHang gioHang = untils.mangMuaHang.get(i);
-                    if(untils.mangGioHang.contains(gioHang)){
-                        untils.mangGioHang.remove(gioHang);
-                    }
-                }
-                untils.mangMuaHang.clear();
-                Toast.makeText(GioHangActivity.this, "Cảm ơn bạn đã mua hàng!", Toast.LENGTH_SHORT).show();
+                 for (int i =0; i<untils.mangMuaHang.size();i++){
+                      GioHang gioHang = untils.mangMuaHang.get(i);
+                      if(untils.mangGioHang.contains(gioHang)){
+                          untils.mangGioHang.remove(gioHang);
+                      }
+                 }
+                 untils.mangMuaHang.clear();
+//                Toast.makeText(GioHangActivity.this, "Cảm ơn bạn đã mua hàng!", Toast.LENGTH_SHORT).show();
                 Intent in = new Intent(GioHangActivity.this, TrangChuKH.class);
                 startActivity(in);
             }
@@ -179,11 +164,19 @@ public class GioHangActivity extends AppCompatActivity {
             maHD = 1 + (untils.hoadonAdmin.get(i).getIdDonHang());
         }
 
+        int maSP;
+        for(int i = 0; i< untils.mangMuaHang.size(); i++){
+            maSP = untils.mangMuaHang.get(i).getMaSP();
+            hoaDon.setMaSP(maSP);
+        }
+
+
         SharedPreferences pref = getApplicationContext().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
         String user = pref.getString("USERNAME","");
 
-        hoaDon.setIdDonHang(maHD);
+//        hoaDon.setIdDonHang(maHD);
         hoaDon.setTongTien(tongTienSP);
+
         hoaDon.setMaKH(user);
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -193,7 +186,14 @@ public class GioHangActivity extends AppCompatActivity {
         if(tongTienSP == 0){
             Toast.makeText(this, "Hãy chọn sản phẩm bạn muốn mua", Toast.LENGTH_SHORT).show();
         } else {
-            untils.hoadonAdmin.add(hoaDon);
+//            untils.hoadonAdmin.add(hoaDon);
+            DaoHoaDon daoHD = new DaoHoaDon(getApplicationContext());
+            if(daoHD.insertHoaDon(hoaDon) > 0){
+                Toast.makeText(this, "Cám ơn bạn đã mua hàng", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Mua thất bại!", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
 //        untils.hoadonAdmin.add(hoaDon);
@@ -233,5 +233,4 @@ public class GioHangActivity extends AppCompatActivity {
 //        fragmentTransaction.replace(R.id.frame_container, fragment);
 //        fragmentTransaction.commit();
 //    }
-    
 }

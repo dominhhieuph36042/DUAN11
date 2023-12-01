@@ -3,14 +3,13 @@ package com.example.duan1.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.duan1.Adapter.ThongTinKhAdapter;
 import com.example.duan1.DAO.DaoKhachHang;
@@ -81,5 +80,4 @@ public class QuanLyTKFragment extends Fragment {
         QuanLyTKFragment fragment = new QuanLyTKFragment();
         return fragment;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.example.duan1.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.duan1.R;
 
@@ -25,9 +23,9 @@ public class TrangchuFragment extends Fragment {
     public TrangchuFragment() {
         // Required empty public constructor
     }
+    Button btndonhang,btnsanpham,btnquanly,btnthongtin,btndoanhthu,btntop10;
 
-
-Button btndonhang,btnsanpham,btnquanly,btnthongtin;
+    Button sp;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,46 +34,19 @@ Button btndonhang,btnsanpham,btnquanly,btnthongtin;
         btndonhang = view.findViewById(R.id.btndonhang);
         btnsanpham = view.findViewById(R.id.btnsanpham);
         btnquanly = view.findViewById(R.id.btnquanlytk);
-        btnthongtin = view.findViewById(R.id.btnthongtintk);
-
+        btnthongtin = view.findViewById(R.id.btnthongtintk) ;
+        btndoanhthu = view.findViewById(R.id.btndoanhthu) ;
+        btntop10 = view.findViewById(R.id.btntop10) ;
 
         return view;
+
+
     }
-
-
-
 
     public static TrangchuFragment newInstance(){
         TrangchuFragment fragment = new TrangchuFragment();
         return fragment;
-}
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//       rcv_spKH.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-//           @Override
-//           public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//
-//               FragmentManager manager = getActivity().getSupportFragmentManager();
-//               manager.beginTransaction().replace(R.id.frame_container, CTSP_kh.newInstance()).commit();
-//
-//
-//               return false;
-//           }
-//
-//           @Override
-//           public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-//
-//           }
-//
-//           @Override
-//           public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-//
-//           }
-//       });
-//
-//    }
-
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -86,7 +57,7 @@ Button btndonhang,btnsanpham,btnquanly,btnthongtin;
             public void onClick(View view) {
                 setToolbarTitle("Quản lý Đơn hàng");
                 FragmentManager manager = getActivity().getSupportFragmentManager();
-               manager.beginTransaction().replace(R.id.frameLayout_home, HoaDonFragment.newInstance()).commit();
+                manager.beginTransaction().replace(R.id.frameLayout_home, HoaDonFragment.newInstance()).commit();
 
             }
         });
@@ -97,6 +68,24 @@ Button btndonhang,btnsanpham,btnquanly,btnthongtin;
                 setToolbarTitle("Quản lý Sản phẩm");
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.frameLayout_home, SanPhamFragment.newInstance()).commit();
+            }
+        });
+
+        btndoanhthu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setToolbarTitle("Doanh thu");
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.frameLayout_home, DoanhThuFragment.newInstance()).commit();
+            }
+        });
+
+        btntop10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setToolbarTitle("Top 10 sản phẩm bán chạy");
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.frameLayout_home, Top10Fragment.newInstance()).commit();
             }
         });
 
@@ -127,4 +116,7 @@ Button btndonhang,btnsanpham,btnquanly,btnthongtin;
             }
         }
     }
+
+
+
 }

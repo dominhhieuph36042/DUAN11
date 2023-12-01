@@ -14,5 +14,5 @@ public class untils {
 
     public static List<DonHang> donHangAdmin;
 
-    public static List<HoaDon> hoadonAdmin ;
+    public static List<HoaDon> hoadonAdmin;
 }

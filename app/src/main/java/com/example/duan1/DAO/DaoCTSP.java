@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.CTSanPham;
-import com.example.duan1.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;

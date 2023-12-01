@@ -8,13 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.ChiTietHoaDon;
 import com.example.duan1.Model.HoaDon;
-import com.example.duan1.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DaoHoaDon {
-
     private DbHelper dbHelper;
     ChiTietHoaDon cthdlDAO;
     public DaoHoaDon(Context context){
@@ -22,30 +20,25 @@ public class DaoHoaDon {
         cthdlDAO = new ChiTietHoaDon();
     }
 
-    public long insertHoaDon(HoaDon obj){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("idHoaDon", obj.getIdDonHang());
-        values.put("maKH", obj.getMaKH());
-        values.put("tongTien", obj.getTongTien());
-        values.put("ngayDat", obj.getNgayDat());
+     public long insertHoaDon(HoaDon obj){
+          SQLiteDatabase db = dbHelper.getWritableDatabase();
+         ContentValues values = new ContentValues();
 
-        return db.insert("HoaDon",null,values);
-    }
+         values.put("maKH", obj.getMaKH());
+         values.put("maSP", obj.getMaSP());
+         values.put("tongTien", obj.getTongTien());
+         values.put("ngayDat", obj.getNgayDat());
 
-    public List<HoaDon> getAll(){
+         return db.insert("HoaDon",null,values);
+     }
+
+     public List<HoaDon> getAll(){
         String sql ="SELECT * FROM HoaDon";
         return getData(sql);
-    }
+     }
 
-    public HoaDon getID (String idHoaDon) {
-        String sql = "SELECT * FROM HoaDon WHERE idHoaDon = ?";
-        List<HoaDon> lstTT = getData(sql,idHoaDon);
-        return lstTT.get(0);
-    }
-
-    public List<HoaDon> getData(String sql, String... selectionArgs){
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+    private List<HoaDon> getData(String sql, String... selectionArgs){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         List<HoaDon> list =  new ArrayList<>();
 
         Cursor c = db.rawQuery(sql, selectionArgs);
@@ -54,7 +47,8 @@ public class DaoHoaDon {
                     c.getInt(0),
                     c.getString(1),
                     c.getInt(2),
-                    c.getString(3)
+                    c.getInt(3),
+                    c.getString(4)
             ));
         }
         if (c != null){
@@ -65,5 +59,4 @@ public class DaoHoaDon {
         }
         return list;
     }
-
 }

@@ -4,15 +4,19 @@ public class HoaDon {
 
     private int idDonHang;
     private String maKH;
+
+    private int maSP;
     private int tongTien;
     private String ngayDat;
+
 
     public HoaDon() {
     }
 
-    public HoaDon(int idDonHang, String maKH, int tongTien, String ngayDat) {
+    public HoaDon(int idDonHang, String maKH, int maSP, int tongTien, String ngayDat) {
         this.idDonHang = idDonHang;
         this.maKH = maKH;
+        this.maSP = maSP;
         this.tongTien = tongTien;
         this.ngayDat = ngayDat;
     }
@@ -31,6 +35,14 @@ public class HoaDon {
 
     public void setMaKH(String maKH) {
         this.maKH = maKH;
+    }
+
+    public int getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
     }
 
     public int getTongTien() {

@@ -38,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_HOADON = 1;
     private static final int FRAGMENT_SANPHAM = 2;
 
+    private static final int FRAGMENT_DOANHTHU = 3;
+    private static final int FRAGMENT_TOP10 = 4;
+    private static final int FRAGMENT_QUANLYTAIKHOAN = 5;
 
-    private static final int FRAGMENT_QUANLYTAIKHOAN = 3;
-
-    private static final int FRAGMENT_THONGTINTAIKHOAN = 4;
+    private static final int FRAGMENT_THONGTINTAIKHOAN = 6;
 
 
     private int mCurrentFragment = FRAGMENT_TRANGCHU;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     String[] title = {"Trang chủ ",
             "Quản lý đơn hàng  ",
             "Quản lý sản phẩm ",
+            "Doanh thu ",
+            "Top 10 sản phẩm bán chạy ",
             "Quản lý tài khoản ",
             "Thông tin tài khoản"};
     TextView tv_username;
@@ -133,16 +136,30 @@ public class MainActivity extends AppCompatActivity {
                         mCurrentFragment = FRAGMENT_SANPHAM;
                     }
                 }
+                else if (item.getItemId() == R.id.doanhthu) {
+                    toolbar.setTitle(title[3]);
+                    if (mCurrentFragment != FRAGMENT_DOANHTHU) {
+                        replaceFragment(new DoanhThuFragment());
+                        mCurrentFragment = FRAGMENT_DOANHTHU;
+                    }
+                }
+                else if (item.getItemId() == R.id.top10) {
+                    toolbar.setTitle(title[4]);
+                    if (mCurrentFragment != FRAGMENT_TOP10) {
+                        replaceFragment(new Top10Fragment());
+                        mCurrentFragment = FRAGMENT_TOP10;
+                    }
+                }
 
                 else if (item.getItemId() == R.id.createAccount) {
-                    toolbar.setTitle(title[3]);
+                    toolbar.setTitle(title[5]);
                     if (mCurrentFragment != FRAGMENT_QUANLYTAIKHOAN) {
                         replaceFragment(new QuanLyTKFragment());
                         mCurrentFragment = FRAGMENT_QUANLYTAIKHOAN;
                     }
                 }
                 else if (item.getItemId() == R.id.changePassword) {
-                    toolbar.setTitle(title[4]);
+                    toolbar.setTitle(title[6]);
                     if (mCurrentFragment != FRAGMENT_THONGTINTAIKHOAN) {
                         replaceFragment(new DoiMatKhauFragment());
                         mCurrentFragment = FRAGMENT_THONGTINTAIKHOAN;

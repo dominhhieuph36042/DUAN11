@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.nfc.Tag;
-import android.util.Log;
 
 import com.example.duan1.Database.DbHelper;
 import com.example.duan1.Model.SanPham;

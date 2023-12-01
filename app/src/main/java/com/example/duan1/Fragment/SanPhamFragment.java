@@ -38,7 +38,6 @@ public class SanPhamFragment extends Fragment {
     ArrayList<SanPham> lstSanPham;
 
 
-
     FloatingActionButton btn_add;
     static DaoSanPham sanPhamDao;
     SanPhamAdapter adapter;

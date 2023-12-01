@@ -13,7 +13,6 @@ import com.example.duan1.Adapter.DonHangAdapter;
 import com.example.duan1.DAO.DaoHoaDon;
 import com.example.duan1.Model.HoaDon;
 import com.example.duan1.R;
-import com.example.duan1.untils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class HoaDonFragment extends Fragment {
         rcvHoaDon = v.findViewById(R.id.rcv_HoaDon);
         rcvHoaDon.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        DonHangAdapter adapter = new DonHangAdapter(getContext(), untils.hoadonAdmin);
+        DonHangAdapter adapter = new DonHangAdapter(getContext(), lstHoaDon);
         rcvHoaDon.setAdapter(adapter);
 //        rcvHoaDon = v.findViewById(R.id.rcv_donHang);
 //        rcvHoaDon.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -45,7 +44,6 @@ public class HoaDonFragment extends Fragment {
 //        rcvHoaDon.setAdapter(adapter);
         return v;
     }
-
     public static HoaDonFragment newInstance(){
         HoaDonFragment fragment = new HoaDonFragment();
         return fragment;
