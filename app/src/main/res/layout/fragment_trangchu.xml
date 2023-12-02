@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         >
         <Button
             android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="30dp"
         >
         <Button
             android:layout_width="wrap_content"

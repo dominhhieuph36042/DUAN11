@@ -3,23 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/donhang"
+    android:layout_margin="10dp"
     >
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/logo"
-        />
+
 
     <TextView
         android:id="@+id/idDonHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đơn hàng 123"
+        android:text="Đơn hàng "
         android:padding="5dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="#E91E63"
+        android:textColor="#0040FF"
+        android:layout_margin="5dp"
         />
 
 
@@ -27,40 +26,48 @@
         android:id="@+id/idKhachHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mã khách hàng"
+        android:text="Mã khách hàng : "
         android:padding="5dp"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
         />
 
     <TextView
         android:id="@+id/idSanPham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tên sản phẩm"
+        android:text="Tên sản phẩm : "
         android:padding="5dp"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
         />
 
     <TextView
         android:id="@+id/tongTien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tổng tiền"
+        android:text="Tổng tiền : "
         android:padding="5dp"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textColor="#FF0000"
         />
 
     <TextView
         android:id="@+id/ngayDat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ngày đặt"
+        android:text="Ngày đặt : "
         android:padding="5dp"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
         />
 
 <!--    <androidx.recyclerview.widget.RecyclerView-->
