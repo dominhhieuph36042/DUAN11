@@ -105,7 +105,12 @@ public class DaoSanPham {
     public SanPham getID (String maSP) {
         String sql = "SELECT * FROM SanPham WHERE maSP = ?";
         List<SanPham> lstTT = getData(sql,maSP);
-        return lstTT.get(0);
+        if (!lstTT.isEmpty()) {
+            return lstTT.get(0);
+        } else {
+            // Handle the case when the list is empty, return null or throw an exception
+            return null;
+        }
     }
 
     public List<SanPham> getAll() {

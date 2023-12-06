@@ -22,7 +22,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
     private RecyclerView.RecycledViewPool viewpool = new RecyclerView.RecycledViewPool();
     Context context;
-     List<HoaDon> lstHoaDon;
+    List<HoaDon> lstHoaDon;
 
 
 

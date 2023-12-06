@@ -37,6 +37,11 @@ public class DaoHoaDon {
         return getData(sql);
      }
 
+    public boolean delete(String id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long row = db.delete("HoaDon","idHoaDon = ?",new String[]{String.valueOf(id)});
+        return row > 0;
+    }
     private List<HoaDon> getData(String sql, String... selectionArgs){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         List<HoaDon> list =  new ArrayList<>();
